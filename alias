@@ -1,0 +1,42 @@
+# Linux basics
+# ------------
+alias rm 'rm -i'
+alias ls 'ls --color'
+alias ll 'ls -alh'
+alias lt 'ls -althr'
+alias du 'du -h'
+alias df 'df -h'
+alias c 'less'
+alias p 'pwd'
+
+# Development
+# -----------
+alias gs 'grep -I -R -n --colour=auto \!:* *'
+alias rej 'find . -type f -name "*.rej"'
+
+# Deviations
+# ----------
+alias gf "tr ':' ' ' | awk '{ print ${dollar}1 }' | no-repeats.py" 
+alias timestamp "date +%Y%m%d%H%M%S"
+
+# Non-specific
+# ------------
+alias ep 'echo `pwd`/\!:1'
+alias e 'env | grep \!*'
+alias m 'make'
+alias mc 'make clean'
+
+# Text editing
+# ------------
+alias g "$HOME/bin/gvim.py --server"
+alias gg "$HOME/bin/gvim.py "
+alias gt 'opentree.tcsh'
+alias vi 'vim'
+alias v 'vim'
+
+# Standard Applications
+# ---------------------
+alias mplayer 'mplayer -ao alsa -loop 0'
+alias mp 'mplayer'
+alias am "amarok; amarok"
+

@@ -1,0 +1,8 @@
+#command
+K		forw-line-force
+L		back-line-force
+k		forw-line-force
+l		back-line-force
+i		back-scroll	 
+^I		back-scroll
+

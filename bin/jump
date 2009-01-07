@@ -1,0 +1,235 @@
+#!/bin/env python2.5
+
+from optparse import OptionParser
+
+import os
+import curses
+import traceback
+import yaml
+
+class monitor:
+    
+    screen = None
+    
+    def __init__(self):
+
+        rc_file = open(os.environ[ "HOME" ] + os.sep + ".jumprc")
+        info = rc_file.read()
+        rc_file.close()
+
+        self.projects = yaml.load(info)
+
+        self.item = int(len(self.projects) / 2)
+        self.entry = 0
+
+    def display(self):
+
+        for i, project in enumerate(self.projects):
+
+            if i != self.item:
+                offset = 0
+                for folder in project: 
+                    self.screen.addstr( i + 4 , 10 + offset, " " + folder[0] + " ", curses.A_NORMAL )
+                    offset += len(folder[0]) + 1
+
+        offset = 0
+        for i, folder in enumerate( self.projects[self.item] ):
+
+            self.screen.addstr( self.item + 4 ,
+                                10 + offset,
+                                " " + self.projects[self.item][i][0] + " ",
+                                curses.A_REVERSE if i == self.entry else curses.A_NORMAL ) 
+
+            offset += len(self.projects[self.item][i][0]) + 1
+
+
+
+    def up_down( self, step ):
+
+        self.item += step
+
+        if self.item > len(self.projects) - 1:
+            self.item = len(self.projects) - 1
+        if self.item < 0:
+            self.item = 0
+
+        self.entry = 0
+
+    def left_right( self, step ):
+
+        self.entry += step
+
+        if self.entry > len(self.projects[self.item]) - 1:
+            self.entry = len(self.projects[self.item]) - 1
+        if self.entry < 0:
+            self.entry = 0
+
+
+
+
+    def shift( self, step ):
+
+        store = self.projects[ self.item ]
+
+        del self.projects[ self.item ]
+
+        self.item += step
+
+        self.projects.insert( self.item, store )
+
+        self.screen.clear()
+
+
+    def dump( self ):
+
+        rc_file = open( os.environ[ "HOME" ] + os.sep + ".jumprc", "w" )
+        rc_file.write( yaml.dump( self.projects ) )
+        rc_file.close()
+   
+
+    def write( self, path="" ):
+
+        try:
+            tempfile = os.environ["JUMP_FILE"]
+        except KeyError:
+            tempfile = "/tmp/jump.tmp"
+
+        file = open( tempfile, "w" )
+        if path:
+            file.write( path )
+        else:
+            file.write( self.projects[ self.item ][ self.entry ][1] )
+        file.close()
+
+
+def app_loop(m):
+
+    write = False
+
+    while 1:
+
+        m.display()
+        
+        c = m.screen.getch()
+            
+        if(0 < c < 256):
+
+            c = chr(c)
+            
+            if c in 'Qq':           # Q or q exits
+                break
+            elif c in 'Rr':
+                m.screen.clear()
+            elif c in '\n':
+                write = True
+                break
+                pass
+            elif c in 'k':
+                m.up_down(1)
+            elif c in 'l':
+                m.up_down(-1)
+            elif c in 'j':
+                m.left_right(-1)
+            elif c in ';':
+                m.left_right(1)
+            elif c in 'K':
+                m.shift(1)
+            elif c in 'L':
+                m.shift(-1)
+                
+
+        else:
+            if c == curses.KEY_UP:
+                m.up_down(-1)
+            elif c == curses.KEY_DOWN:
+                m.up_down(1)
+            elif c == curses.KEY_RIGHT:
+                pass
+            elif c == curses.KEY_LEFT:
+                pass
+            elif c == curses.KEY_ENTER:
+                return
+
+    return write
+
+
+def add( name, directory ):
+
+    pass
+
+    rcfile = open(os.environ[ "HOME" ] + os.sep + ".jumprc")
+    info = rcfile.read()
+    rcfile.close()
+
+    projects = yaml.load(info)
+
+    print projects
+
+    directory = os.path.realpath(directory)
+
+    projects.append( [ name, directory ] )
+
+   #  
+   #  project
+
+   #  file_handle = open(self.rc_file, "w")
+   #  file_handle.write(yaml.dump(self.info))
+   #  file_handle.close()
+
+
+def main():
+
+    parser = OptionParser()
+    parser.allow_interspersed_args = False
+    parser.add_option("-v", "--verbose", dest="verbose", action="store_true", default=False)
+    opts, args = parser.parse_args()
+
+    if args and args[0] == "add":
+
+        add( args[1], args[2] if len(args) > 2 else "." )
+
+        return
+
+    m = monitor()
+
+    try:
+        m.screen = curses.initscr()         # Initialize curses
+        
+        curses.noecho()                     # Turn off echoing of keys
+        curses.cbreak()                     # and enter cbreak mode, 
+                                            # where no buffering is performed on keyboard input
+        
+        # In keypad mode, escape sequences for special keys
+        # (like the cursor keys) will be interpreted and
+        # a special value like curses.key_left will be returned
+        m.screen.keypad(1)
+        
+        write = app_loop(m)         # Enter the main loop
+        
+        # Set everything back to normal
+        m.screen.keypad(0)
+        curses.echo()
+        curses.nocbreak()
+        curses.endwin()         # Terminate curses
+
+        if write:
+            m.write()
+        else:
+            m.write(os.getcwd())
+
+        m.dump()
+
+    except:
+        # In the event of an error, restore the terminal
+        # to a sane state.
+        m.screen.keypad(0)
+        curses.echo()
+        curses.nocbreak()
+        curses.endwin()
+        traceback.print_exc()       # Print the exception
+
+if __name__ == "__main__":
+
+    main()
+
+

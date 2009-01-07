@@ -1,0 +1,66 @@
+
+URxvt.perl-ext-common: default
+URxvt.perl-ext: tabber
+URxvt.perl-lib: /home/mike/.user_config
+URxvt.geometry: 150x55
+
+URxvt.scrollBar: False
+URxvt.linespace: 5
+URxvt.internalBorder: 3
+
+urxvt*depth: 32
+
+!    URxvt config
+!
+URxvt*background:                #292929
+URxvt*foreground:                white
+URxvt*fading:                    0
+URxvt*tintColor:                 #000000
+URxvt*shading:                   0
+URxvt*inheritPixmap:             false
+URxvt*scrollBar:                 false
+URxvt*title:                     urxvt
+URxvt*termName:                  rxvt-unicode
+
+URxvt*scrollTtyKeypress:         true
+URxvt*scrollTtyOutput:           false
+URxvt*scrollWithBuffer:          false
+URxvt*scrollstyle:               plain
+URxvt*secondaryScroll:           true
+
+URxvt*urlLauncher:               firefox
+URxvt*matcher.button:            1
+URxvt*iconName:                  rxvt-unicode
+URxvt.saveLines:				 10000
+
+URxvt*font: xft:DejaVu Sans Mono:size=10
+
+! #########################################
+!
+!    Urxvt Colours
+!
+! Black
+URxvt*color0:      #131212
+URxvt*color8:      #474747
+! Red 
+URxvt*color1:      #472323
+URxvt*color9:      #5c2929
+! Green
+URxvt*color2:      #299E1B
+URxvt*color10:     #77E768
+! Yellow
+URxvt*color3:      #96833F
+URxvt*color11:     #D0B249
+! Blue
+URxvt*color4:      #2467AD
+URxvt*color12:     #6B90EE
+! Purple
+URxvt*color5:      #655272
+URxvt*color13:     #9F75BA
+! Cyan
+URxvt*color6:      #92B19E
+URxvt*color14:     #A1CDCD
+! White
+URxvt*color7:      #FFFFFF
+URxvt*color15:     #97927C
+

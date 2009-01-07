@@ -1,0 +1,10 @@
+#!/bin/tcsh -f
+
+if ( "$#argv" == "1" ) then
+	if ( "$argv[1]" == "-e" ) then
+		~/bin/gvim.py ~/.todo
+	endif
+else
+	less ~/.todo
+endif
+

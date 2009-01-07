@@ -1,0 +1,13 @@
+[user]
+	name = mpj
+[alias]
+	b = branch
+	d = diff
+	dc = diff --cached
+	c = checkout
+	hist = log HEAD^^^..
+	fp = format-patch
+	s = status
+	commmit = commit
+[apply]
+	whitespace = strip

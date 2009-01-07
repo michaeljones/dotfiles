@@ -1,0 +1,46 @@
+#!/bin/tcsh -f
+
+set project = $1
+
+if ( $project == "REX" ) then
+
+	set folder = "/tmp/REX"`date "+%Y%m%d"`
+
+	mkdir -p $folder
+	cd $folder
+
+	svn checkout svn+rsh://svn/sw/REX/trunk@HEAD > /dev/null
+
+	cd $folder/trunk/build/gcc
+
+	setenv NOFILTER 1
+	setenv NOCOLOR 1
+
+	set date = `date "+%d/%m/%Y"`
+
+	# clean_all BUILD=release |& mail -s "REX Clean on $date" $EMAIL
+
+	build_all BUILD=release >& info.build # |& mail -s "REX Build on $date" $EMAIL
+	
+	setenv PYTHONPATH $PYTHONPATH":/user_data/ARCHIVE/local/lib/python2.4/site-packages"
+
+	/user_data/ARCHIVE/bin/template.py info.build > build_final.html
+
+	# /user_data/ARCHIVE/local/bin/pygmentize -S trac -f html >& styles.css
+	# /user_data/ARCHIVE/local/bin/pygmentize -f html info.build >& build.html
+
+	# /user_data/ARCHIVE/bin/html.py -s styles.css build.html build_final.html
+
+	/user_data/ARCHIVE/bin/pyemail.py -s "REX Build on $date" build_final.html
+
+	rm -fr $folder
+
+endif 
+
+if ( $project == "cron" ) then
+	
+	echo "Cron test " | mail -s "Cron Test" $EMAIL
+
+endif
+
+

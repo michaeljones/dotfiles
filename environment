@@ -1,0 +1,22 @@
+# Set environment variables
+
+# Generic
+# ------
+setenv EDITOR "gvim -f"
+setenv WINEDITOR "gvim -f"
+setenv GREP_COLOR "36"
+setenv LS_COLORS "ow=01;34"
+
+
+# Dneg
+# ----
+setenv PATH ".:${PATH}:$HOME/bin"
+
+
+# Development
+# -----------
+setenv PYTHONPATH ${HOME}'/box/lib/python2.5/site-packages:'${HOME}'/local/lib/python2.5/site-packages'
+setenv PYTHONSTARTUP ~/.python_startup.py
+
+setenv PATH "$HOME/bin:$HOME/box/bin:$HOME/local/bin:/var/lib/gems/1.8/bin:$PATH"
+
