@@ -1,14 +1,11 @@
 
+# I started with bash so I like having a $ sign in my prompt
 set dollar = '$'
 set prompt = "%{\033[m%}[%{\033[33m%}%n%{\033[m%}@%{\033[33m%}%m%{\033[m%}~%{\033[33m%}%@%{\033[m%}:%c]$dollar "
-# set prompt = %B%m:%/":# "%b
-# set prompt = "$USER@%B$HOST\:%b%/ "
-# set prompt = "%B%M.%n%b:%~ %#"
 
-source ~/.environment 
-source ~/.alias
-source ~/.complete
-
+source ~/.user_config/environment 
+source ~/.user_config/alias
+source ~/.user_config/complete
 
 # Don't tab-auto suggest only autocomplete
 unset autolist
@@ -20,16 +17,8 @@ set savehist=500 merge
 set histfile=~/.tcsh_history
 
 # Bindkeys
-# bindkey ^H list-choices
-# bindkey ^U history-search-backward 
-# bindkey ^D history-search-backward
 bindkey -k up history-search-backward
 bindkey -k down history-search-forward
 bindkey ^[[3~ delete-char
 bindkey ^R i-search-back
-# bindkey ^J history-search-forward
-# bindkey ^H history-search-backward
 
-#houdini stuff
-alias H8.2 'source /tools/SITE/scripts/H8.2'
-alias H9.1 'source /tools/SITE/scripts/H9.1' 

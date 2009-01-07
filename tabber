@@ -1,5 +1,8 @@
 #! perl
 
+# A quick hack of the urxvt "tabbed" extension to change 
+# the keys for creating and moving between tabs
+
 sub refresh {
    my ($self) = @_;
 

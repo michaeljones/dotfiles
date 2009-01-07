@@ -7,11 +7,9 @@ setenv WINEDITOR "gvim -f"
 setenv GREP_COLOR "36"
 setenv LS_COLORS "ow=01;34"
 
-
 # Dneg
 # ----
-setenv PATH ".:${PATH}:$HOME/bin"
-
+setenv PATH "${PATH}:$HOME/bin"
 
 # Development
 # -----------

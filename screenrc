@@ -1,4 +1,6 @@
 
+# I don't use screen regularly, prefering a tabbed terminal emulator 
+
 shell -${SHELL}
 startup_message off
 defscrollback 1000
