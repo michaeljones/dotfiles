@@ -1,7 +1,20 @@
 
+set interactive = 0
+
+if ( $?prompt ) then
+	set interactive = 1
+endif
+
 # I started with bash so I like having a $ sign in my prompt
 set dollar = '$'
 set prompt = "%{\033[m%}[%{\033[33m%}%n%{\033[m%}@%{\033[33m%}%m%{\033[m%}~%{\033[33m%}%@%{\033[m%}:%c]$dollar "
+
+if ( "$interactive" == "1" ) then
+	stty sane
+	stty dec ek
+	stty stop ""
+	stty start ""
+endif
 
 source ~/.user_config/environment 
 source ~/.user_config/alias
@@ -9,6 +22,9 @@ source ~/.user_config/complete
 
 # Don't tab-auto suggest only autocomplete
 unset autolist
+
+# Quoting 
+set backslash_quote
 
 # Set history length
 set history=1000
