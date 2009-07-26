@@ -17,6 +17,7 @@ syntax on
 " Gvim Gui Options
 set guioptions-=m
 set guioptions-=T
+set guioptions+=c
 
 " Display line numbers
 set number				
@@ -30,16 +31,20 @@ set shiftwidth=4
 
 set vb t_vb=
 
+" autocmd!
+
 " Files specific tab settings
 autocmd FileType make setlocal noexpandtab
 autocmd BufNewFile,BufRead COMMIT_EDITMSG set filetype=gitcommit
 
 " SConstruct file is a Python file
-au BufNewFile,BufRead SConstruct,SConscript set ft=python
-
-au BufNewFile,BufRead  svn-commit.* setf svn
-au BufNewFile,BufRead  *.mako	setf mako
-au BufNewFile,BufRead  *.sl		setf 'sl'
+autocmd BufNewFile,BufRead SConstruct,SConscript set ft=python
+autocmd BufNewFile,BufRead *.scons set ft=python
+autocmd BufNewFile,BufRead svn-commit.* setf svn
+autocmd BufNewFile,BufRead *.mako set filetype=mako
+autocmd BufNewFile,BufRead *.sl set filetype=sl
+autocmd BufNewFile,BufRead *.lib set filetype=make
+autocmd BufNewFile,BufRead *.pkg set filetype=xml
 
 augroup mkd
 autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>
@@ -93,8 +98,8 @@ map <c-i> <c-u>
 map <F1> :TMiniBufExplorer<cr>
 map <F2> :TlistToggle
 
-map <A-k> :bnext<CR>
-map <A-l> :bprevious<CR> 
+" map <A-k> :bnext<CR>
+" map <A-l> :bprevious<CR> 
 
 map <C-k> :bnext<CR>
 map <C-l> :bprevious<CR> 
@@ -105,17 +110,21 @@ imap <A-l> <ESC>:bprevious<CR>
 imap <C-k> <ESC>:bnext<CR>
 imap <C-l> <ESC>:bprevious<CR> 
 
+map <c-del> <ESC>
+imap <c-del> <ESC>
+
+
 " Ctags
 map <A-n> :cprevious<CR>
 map <A-m> :cnext<CR>
 
 " Save & Quits
-map <A-w> :bd<CR>
-map <A-S-w> :bd!<CR>
+map <C-w> :bd<CR>
+map <C-S-w> :bd!<CR>
 
-map <A-q> :q!<CR>:q!<CR>
-vmap <A-q> <ESC>:q!<CR>:q!<CR>
-imap <A-q> <ESC>:q!<CR>:q!<CR>
+map <C-q> :q!<CR>:q!<CR>
+vmap <C-q> <ESC>:q!<CR>:q!<CR>
+imap <C-q> <ESC>:q!<CR>:q!<CR>
 map <C-s> :w<CR>
 
 imap <C-s> <esc><C-s>
@@ -125,9 +134,14 @@ map <c-o> o<esc>
 map <c-s-o> O<esc>
 map <c-Space> a <esc>
 
+map <c-CR> a<CR><esc>
+
 " make
 map <F12> <c-s>:make<CR>
 imap <F12> <c-s><ESC>:make<CR>
+
+" Put function parameter on a new line
+map <F6> t,;a<CR><ESC>
 
 " Preferable behaviour
 map Y y$

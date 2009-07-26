@@ -328,7 +328,7 @@ sub tab_key_press {
    # print "Keysym " + $keysym + "\n\n";
    # print "\n";
 
-	if ( $event->{state} & urxvt::Mod1Mask || $event->{state} & urxvt::ControlMask ) {
+	if ( $event->{state} & urxvt::ControlMask ) {
 	   if ($keysym == 0x6a || $keysym == 0x3b) {
 	      my ($idx) = grep $self->{tabs}[$_] == $tab, 0 .. $#{ $self->{tabs} };
 

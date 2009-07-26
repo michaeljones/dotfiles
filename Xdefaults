@@ -1,6 +1,4 @@
 
-!    URxvt config
-!
 URxvt.perl-ext-common: default
 URxvt.perl-ext: tabber
 URxvt.perl-lib: /home/mike/.user_config
@@ -10,8 +8,9 @@ URxvt.scrollBar: False
 URxvt.linespace: 5
 URxvt.internalBorder: 3
 
-urxvt*depth: 32
 
+!    URxvt config
+!
 URxvt*background:                #292929
 URxvt*foreground:                white
 URxvt*fading:                    0
@@ -33,7 +32,7 @@ URxvt*matcher.button:            1
 URxvt*iconName:                  rxvt-unicode
 URxvt.saveLines:				 10000
 
-URxvt*font: xft:DejaVu Sans Mono:size=10
+URxvt*font: xft:DejaVu Sans Mono:size=11
 
 ! #########################################
 !
@@ -43,7 +42,8 @@ URxvt*font: xft:DejaVu Sans Mono:size=10
 URxvt*color0:      #131212
 URxvt*color8:      #474747
 ! Red 
-URxvt*color1:      #472323
+! URxvt*color1:      #472323
+URxvt*color1:      #9A3333
 URxvt*color9:      #5c2929
 ! Green
 URxvt*color2:      #299E1B
