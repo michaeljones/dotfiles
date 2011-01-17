@@ -1,4 +1,4 @@
 
 # Source complete settings from tcshrc project complete.tcsh
-source ~/.user_config/complete.tcsh
+# source ~/.user_config/complete.tcsh
 

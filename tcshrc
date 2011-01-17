@@ -2,7 +2,7 @@
 set dollar = '$'
 set prompt = "%{\033[m%}[%{\033[33m%}%n%{\033[m%}@%{\033[33m%}%m%{\033[m%}~%{\033[33m%}%@%{\033[m%}:%c]$dollar "
 
-if ( "$interactive" == "1" ) then
+if ( "1" == "1" ) then
 	stty sane
 	stty dec ek
 	stty stop ""
