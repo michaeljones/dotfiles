@@ -16,5 +16,6 @@
 	tool = meld
 [color]
 	diff = auto
+	ui = auto
 [push]
 	default = nothing

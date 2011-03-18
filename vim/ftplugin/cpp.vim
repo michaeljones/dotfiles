@@ -7,6 +7,12 @@ if exists("b:did_ftplugin")
 endif
 
 
+setlocal expandtab
+
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+
 " Print Error
 map  <buffer> <C-e> astd::cerr << "mpj-debug: " << std::endl;<ESC>14hi
 imap <buffer> <C-e> std::cerr << "mpj-debug: " << std::endl;<ESC>14hi

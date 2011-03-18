@@ -6,5 +6,5 @@ if ( "$#argv" == "1" ) then
 	set dir = $argv[1]
 endif
 
-find $dir -type f | grep -v -E '\.git|^.$|~$' | sort | xargs gvim.py
+find $dir -type f | grep -v -E '\.redo|\.git|\.svn|^.$|~$' | sort | xargs gvim.py
 

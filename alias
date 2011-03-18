@@ -10,6 +10,11 @@ alias c 'less'
 alias p 'pwd'
 
 
+# Name console
+# ------------
+alias name 'echo -n "\033]2;\!:*\007"'
+
+
 # Navigation
 # ----------
 alias c '~/bin/jump; cd `cat /tmp/jump.tmp`; echo Change directory: `cat /tmp/jump.tmp`'
@@ -22,6 +27,7 @@ alias fm 'cd `findmod \!:*`'
 # -----------
 
 alias gs 'grep -I -R -n --colour=auto \!:* *'
+alias gp 'grep -I -R -n --colour=auto `xclip -o` *'
 alias rej 'find . -type f -name "*.rej"'
  
 # Personal

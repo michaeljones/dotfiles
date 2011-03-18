@@ -45,6 +45,7 @@ autocmd BufNewFile,BufRead *.mako set filetype=mako
 autocmd BufNewFile,BufRead *.sl set filetype=sl
 autocmd BufNewFile,BufRead *.lib set filetype=make
 autocmd BufNewFile,BufRead *.pkg set filetype=xml
+autocmd BufNewFile,BufRead *.log set nowrap
 
 augroup mkd
 autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>
@@ -86,12 +87,12 @@ let python_highlight_exceptions = 1
 " KeyBoard mappings
 " -----------------
 
-map j <left>
-map k <down>
-map l <up>
-map ; <right>
+" map j <left>
+" map k <down>
+" map l <up>
+" map ; <right>
 
-map <c-i> <c-u>
+" map <c-i> <c-u>
 
 
 " Buffer nav
@@ -101,14 +102,11 @@ map <F2> :TlistToggle
 " map <A-k> :bnext<CR>
 " map <A-l> :bprevious<CR> 
 
-map <C-k> :bnext<CR>
-map <C-l> :bprevious<CR> 
+map <C-j> :bnext<CR>
+map <C-k> :bprevious<CR> 
 
-imap <A-k> <ESC>:bnext<CR>
-imap <A-l> <ESC>:bprevious<CR> 
-
-imap <C-k> <ESC>:bnext<CR>
-imap <C-l> <ESC>:bprevious<CR> 
+imap <C-j> <ESC>:bnext<CR>
+imap <C-k> <ESC>:bprevious<CR> 
 
 map <c-del> <ESC>
 imap <c-del> <ESC>
@@ -119,15 +117,15 @@ map <A-n> :cprevious<CR>
 map <A-m> :cnext<CR>
 
 " Save & Quits
-map <C-w> :bd<CR>
-map <C-S-w> :bd!<CR>
+" map <C-w> :bd<CR>
+" map <C-S-w> :bd!<CR>
+" 
+" map <C-q> :q!<CR>:q!<CR>
+" vmap <C-q> <ESC>:q!<CR>:q!<CR>
+" imap <C-q> <ESC>:q!<CR>:q!<CR>
+" map <C-s> :w<CR>
 
-map <C-q> :q!<CR>:q!<CR>
-vmap <C-q> <ESC>:q!<CR>:q!<CR>
-imap <C-q> <ESC>:q!<CR>:q!<CR>
-map <C-s> :w<CR>
-
-imap <C-s> <esc><C-s>
+" imap <C-s> <esc><C-s>
 
 " Insert new line 
 map <c-o> o<esc>

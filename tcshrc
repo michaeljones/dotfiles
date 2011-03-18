@@ -38,6 +38,6 @@ bindkey ^D list-or-eof
 # bindkey ^H history-search-backward
 
 
-bindkey ^l history-search-backward
-bindkey ^k history-search-forward
+bindkey ^k history-search-backward
+bindkey ^j history-search-forward
  

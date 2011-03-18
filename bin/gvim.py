@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 import sys
 import os
@@ -22,7 +22,7 @@ def main(argv):
     files = []
 
     # Setup file types to ignore
-    ignore = "~ .o .pdb .so .a .pyc".split()
+    ignore = "~ .o .pdb .so .a .pyc .bks .bake".split()
 
     flags = ""
     line_number = ""
@@ -72,7 +72,7 @@ def main(argv):
             line_number = ""
 
     # Run the command
-    command = "gvim " + flags + " ".join(files) + line_number
+    command = "gvim -geom 180x60+100+10 " + flags + " ".join(files) + line_number
     os.system(command)
 
 
