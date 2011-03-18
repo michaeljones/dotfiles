@@ -9,12 +9,21 @@ if ( "1" == "1" ) then
 	stty start ""
 endif
 
+bindkey "^L" history-search-backward
+bindkey "^K" history-search-forward
+
 source ~/.user_config/environment 
 source ~/.user_config/alias
 source ~/.user_config/complete
 
 # Don't tab-auto suggest only autocomplete
 unset autolist
+
+# Disable system bell
+set nobeep
+
+# Quoting 
+set backslash_quote
 
 # Set history length
 set history=10000

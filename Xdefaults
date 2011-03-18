@@ -30,7 +30,7 @@ URxvt*secondaryScroll:           true
 URxvt*urlLauncher:               firefox
 URxvt*matcher.button:            1
 URxvt*iconName:                  rxvt-unicode
-URxvt.saveLines:				 10000
+URxvt.saveLines:				 100000
 
 URxvt*font: xft:DejaVu Sans Mono:size=11
 
@@ -42,9 +42,8 @@ URxvt*font: xft:DejaVu Sans Mono:size=11
 URxvt*color0:      #131212
 URxvt*color8:      #474747
 ! Red 
-! URxvt*color1:      #472323
-URxvt*color1:      #9A3333
-URxvt*color9:      #5c2929
+URxvt*color1:      #CD5C5C
+URxvt*color9:      #8E1A00
 ! Green
 URxvt*color2:      #299E1B
 URxvt*color10:     #77E768

@@ -10,16 +10,20 @@ setenv LESS "R"
 
 setenv P "`xclip -o`"
 
-# Dneg
-# ----
-setenv PATH "${PATH}:$HOME/bin:$HOME/local/bin"
-
 # Android
 setenv PATH "${PATH}:$HOME/software/android/latest/tools:$HOME/software/android/latest/platform-tools"
 
 # Development
 # -----------
-setenv PYTHONPATH ${HOME}'/box/lib/python2.5/site-packages:'${HOME}'/local/lib/python2.5/site-packages'
+setenv PYTHONPATH ${HOME}'/box/lib/python2.6/site-packages:'${HOME}'/local/lib/python2.6/site-packages'
 setenv PYTHONSTARTUP ~/.python_startup.py
 
+setenv PATH "$HOME/local/git/bin:$HOME/bin:$HOME/box/bin:$HOME/local/bin:$PATH"
+
+setenv EMAIL "m.pricejones@gmail.com"
+
+setenv GOROOT "$HOME/projects/go"
+setenv GOOS "linux"
+setenv GOARCH "amd64"
+setenv GOBIN "$HOME/bin/go"
 

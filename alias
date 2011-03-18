@@ -59,3 +59,7 @@ alias mplayer 'mplayer -ao alsa -loop 0'
 alias mp 'mplayer'
 alias am "amarok; amarok"
 
+alias spotify 'wine "C:\\Spotify\spotify.exe" &'
+
+alias rg 'cd ~/projects' 
+

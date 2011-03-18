@@ -2,6 +2,14 @@
 
 import sys
 import os
+
+# Remove current directory from path if it is there
+# as this can lead to problems opening files in python packages
+try:
+    sys.path.remove(os.getcwd())
+except ValueError:
+    pass
+
 import commands
 import glob
 import optparse
@@ -22,7 +30,7 @@ def main(argv):
     files = []
 
     # Setup file types to ignore
-    ignore = "~ .o .pdb .so .a .pyc .bks .bake".split()
+    ignore = "~ .o .pdb .so .a .pyc .bks .bake -bin".split()
 
     flags = ""
     line_number = ""
@@ -71,8 +79,11 @@ def main(argv):
             flags += " --remote-silent "
             line_number = ""
 
+    os.putenv( "GCC_NO_HIGHLIGHT", "1" )
+
+    local_geometry = os.environ[ "MPJ_LOCAL_VIM_GEOMETRY" ]
     # Run the command
-    command = "gvim -geom 180x60+100+10 " + flags + " ".join(files) + line_number
+    command = "gvim -geom %s %s %s%s" % ( local_geometry, flags, " ".join(files), line_number )
     os.system(command)
 
 

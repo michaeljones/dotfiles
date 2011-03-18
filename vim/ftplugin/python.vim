@@ -8,9 +8,9 @@ endif
 
 setlocal expandtab
 
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+setlocal tabstop=4
+setlocal softtabstop=4
+setlocal shiftwidth=4
 
 map  <buffer> <C-e> asys.stderr.write("\n")<ESC>3hi
 imap <buffer> <C-e> sys.stderr.write("\n")<ESC>3hi

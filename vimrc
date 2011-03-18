@@ -13,6 +13,7 @@ endif
 set background=dark
 colorscheme desert
 syntax on
+filetype on
 
 " Gvim Gui Options
 set guioptions-=m
@@ -20,7 +21,7 @@ set guioptions-=T
 set guioptions+=c
 
 " Display line numbers
-set number				
+set number
 
 " Tabbing settings
 set autoindent
@@ -46,6 +47,7 @@ autocmd BufNewFile,BufRead *.sl set filetype=sl
 autocmd BufNewFile,BufRead *.lib set filetype=make
 autocmd BufNewFile,BufRead *.pkg set filetype=xml
 autocmd BufNewFile,BufRead *.log set nowrap
+autocmd BufNewFile,BufRead *.do set filetype=sh
 
 augroup mkd
 autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>

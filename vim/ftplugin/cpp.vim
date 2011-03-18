@@ -6,6 +6,7 @@ if exists("b:did_ftplugin")
   finish
 endif
 
+set expandtab
 
 setlocal expandtab
 
