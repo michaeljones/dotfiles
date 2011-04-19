@@ -30,7 +30,7 @@ def main(argv):
     files = []
 
     # Setup file types to ignore
-    ignore = "~ .o .pdb .so .a .pyc .bks .bake -bin".split()
+    ignore = "~ .o .pdb .so .a .pyc .bks .bake -bin .png".split()
 
     flags = ""
     line_number = ""
@@ -40,33 +40,41 @@ def main(argv):
     if len(args) == 1:
 
         if args[0].count(":"):
-            file, line = args[0].split(":")
+            file_, line = args[0].split(":")
 
-            args = [file]
+            args = [file_]
             line_number += " +" + line + " "
 
 
     # Process all the args which should be file names
-    for file in args:
+    for entry in args:
 
         # Create an array with the file name
-        matches = [file]
+        matches = [entry]
+
+        # If the file name has no "." in it, then we check to see if it exists
+        # if it doesn't then check to see if we get a glob match for file.* and
+        # open them instead
+        if not entry.count("."):
+            if not os.path.exists( entry ):
+                results = glob.glob( "%s.*" % entry )
+                if results:
+                    matches = results
 
         # If the file name ends in "." then run a glob to
         # pick up all the possibilities
-        if file.endswith("."):
-            matches = glob.glob(file + "*")
+        elif entry.endswith("."):
+            matches = glob.glob(entry + "*")
 
-        
         # Go through all the possible files
-        for file in matches:
+        for file_ in matches:
             include = True
             # Only include if it isn't on the ignore list
             for ending in ignore:
-                if file.endswith(ending):
+                if file_.endswith(ending):
                     include = False
             if include:
-                files.append(file)
+                files.append(file_)
 
     files.sort()
 
@@ -82,6 +90,7 @@ def main(argv):
     os.putenv( "GCC_NO_HIGHLIGHT", "1" )
 
     local_geometry = os.environ[ "MPJ_LOCAL_VIM_GEOMETRY" ]
+
     # Run the command
     command = "gvim -geom %s %s %s%s" % ( local_geometry, flags, " ".join(files), line_number )
     os.system(command)

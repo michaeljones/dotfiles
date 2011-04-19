@@ -325,8 +325,8 @@ sub tab_key_press {
 #		print "Mod1Mask is on";
 #	}
 	
-   # print "Keysym " + $keysym + "\n\n";
-   # print "\n";
+   #print "Keysym " + $keysym + "\n\n";
+   #print "\n";
 
 	if ( $event->{state} & urxvt::ControlMask ) {
 	   if ($keysym == 0x68 || $keysym == 0x6c) {

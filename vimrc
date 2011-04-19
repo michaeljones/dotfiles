@@ -113,10 +113,10 @@ map <F2> :TlistToggle
 " map <A-l> :bprevious<CR> 
 
 map <C-j> :bnext<CR>
-map <C-k> :bprevious<CR> 
+map <C-k> :bprevious<CR>
 
 imap <C-j> <ESC>:bnext<CR>
-imap <C-k> <ESC>:bprevious<CR> 
+imap <C-k> <ESC>:bprevious<CR>
 
 map <c-del> <ESC>
 imap <c-del> <ESC>
@@ -129,7 +129,7 @@ map <A-m> :cnext<CR>
 " Save & Quits
 " map <C-w> :bd<CR>
 " map <C-S-w> :bd!<CR>
-" 
+
 " map <C-q> :q!<CR>:q!<CR>
 " vmap <C-q> <ESC>:q!<CR>:q!<CR>
 " imap <C-q> <ESC>:q!<CR>:q!<CR>

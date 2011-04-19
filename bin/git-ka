@@ -1,4 +1,4 @@
-#!/bin/sh 
+#!/bin/sh
 
 # Find the root directory of the git repos
 topdir=`git rev-parse --show-toplevel 2> /dev/null`
@@ -6,13 +6,14 @@ topdir=`git rev-parse --show-toplevel 2> /dev/null`
 # If that's failed we're not in a repository, so exit with a nice message
 if [ $? -ne 0 ]
 then
-    echo Not in a git repository
-    exit
+	echo Not in a git repository
+    exit 1
 fi
 
-# Running git status somehow helps us avoid false positives on files whose
-# timestamps have changed but whose contents have not been changed
+# Running git status helps clear false positives in gitk where files are listed
+# because their timestamps but not their content has changed
 git status > /dev/null
 
-gitk --all&
+# Start gitk with an argcmd that lists every object in the repository
+gitk --all $* &
 

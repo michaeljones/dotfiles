@@ -1,6 +1,6 @@
 [user]
 	name = Michael Jones
-	email = m.pricejones@gmail.com
+	email = mjones@wetafx.co.nz
 [alias]
 	b = branch
 	d = diff
@@ -10,6 +10,7 @@
 	fp = format-patch
 	s = status
 	commmit = commit
+	rn = release-notes
 [apply]
 	whitespace = strip
 [merge]
@@ -19,3 +20,5 @@
 	ui = auto
 [push]
 	default = nothing
+[gc]
+	auto = 0

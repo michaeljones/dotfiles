@@ -6,6 +6,11 @@ if exists("b:did_ftplugin")
   finish
 endif
 
+setlocal expandtab
+
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 
 " Error call - Print to shell
 map  <buffer> <C-e> atrace("");<ESC>2hi

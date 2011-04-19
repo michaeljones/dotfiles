@@ -1,0 +1,6 @@
+
+# Source complete settings from tcshrc project complete.tcsh
+source ~/.user_config/complete.tcsh
+
+complete g 'p/*/f:^*.{6,pyc}/'
+
