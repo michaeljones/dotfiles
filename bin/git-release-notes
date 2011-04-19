@@ -1,0 +1,28 @@
+#!/usr/bin/env python
+
+import os
+import re
+
+pipe = os.popen( 'git log --pretty="format:%s" Solid-3_trunk..HEAD' )
+
+print "<html>"
+print "<head>"
+print "</head>"
+print "<body>"
+print "<p>"
+
+
+for line in pipe:
+
+    match = re.match( ".*refs #(?P<refid>\d+).*", line )
+
+    if match:
+        ticket = match.group("refid")
+    else:
+        print line
+
+    print re.sub( "refs #\d+", 'refs #<a href="http://redmine.wetafx.co.nz/issues/%s">%s</a>' % ( ticket, ticket ), line ).strip() + "<br/>\n"
+
+print "</p>"
+print "</body>"
+print "</html>"

@@ -1,0 +1,9 @@
+#!/bin/tcsh -f
+
+# set old_path=$PATH
+#
+# setenv PATH $HOME/bin/git-svn-fix:$PATH
+
+make $* |& python ~/bin/gcc-colour.py
+
+# setenv PATH $old_path
