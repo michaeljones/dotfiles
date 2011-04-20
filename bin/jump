@@ -124,17 +124,17 @@ def app_loop(m):
                 write = True
                 break
                 pass
-            elif c in 'k':
-                m.up_down(1)
-            elif c in 'l':
-                m.up_down(-1)
             elif c in 'j':
+                m.up_down(1)
+            elif c in 'k':
+                m.up_down(-1)
+            elif c in 'h':
                 m.left_right(-1)
-            elif c in ';':
+            elif c in 'l':
                 m.left_right(1)
-            elif c in 'K':
+            elif c in 'J':
                 m.shift(1)
-            elif c in 'L':
+            elif c in 'K':
                 m.shift(-1)
                 
 
