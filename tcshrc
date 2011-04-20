@@ -12,9 +12,9 @@ endif
 bindkey "^L" history-search-backward
 bindkey "^K" history-search-forward
 
-source ~/.user_config/environment 
-source ~/.user_config/alias
-source ~/.user_config/complete
+source ~/.user_config/tcsh/environment 
+source ~/.user_config/tcsh/alias
+source ~/.user_config/tcsh/complete
 
 # Don't tab-auto suggest only autocomplete
 unset autolist
