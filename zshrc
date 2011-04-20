@@ -16,8 +16,8 @@ stty dec ek
 stty stop ""
 stty start ""
 
-bindkey "^J" history-search-backward
-bindkey "^K" history-search-forward
+bindkey "^J" history-search-forward
+bindkey "^K" history-search-backward
 
 export MPJ_LOCAL_VIM_GEOMETRY="150x120+200+20"
 
@@ -56,6 +56,8 @@ alias df='df -h'
 
 alias spotify="padsp wine 'C:\\Spotify\spotify.exe' &"
 alias rg="cd ~/projects"
+
+alias c='jump; cd `cat /tmp/jump.tmp`'
 
 # Development
 # -----------

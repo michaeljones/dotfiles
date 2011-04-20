@@ -8,8 +8,6 @@ setenv GREP_COLOR "36"
 setenv LS_COLORS "ow=01;34"
 setenv LESS "R"
 
-setenv P "`xclip -o`"
-
 # Android
 setenv PATH "${PATH}:$HOME/software/android/latest/tools:$HOME/software/android/latest/platform-tools"
 
