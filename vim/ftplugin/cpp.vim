@@ -15,21 +15,21 @@ set softtabstop=4
 set shiftwidth=4
 
 " Print Error
-map  <buffer> <C-e> astd::cerr << "mpj-debug: " << std::endl;<ESC>14hi
-imap <buffer> <C-e> std::cerr << "mpj-debug: " << std::endl;<ESC>14hi
-
-" Print Standard
-map  <buffer> <C-c> astd::cout << "" << std::endl;<ESC>14hi
-imap <buffer> <C-c> std::cout << "" << std::endl;<ESC>14hi
+" map  <buffer> <C-e> astd::cerr << "mpj-debug: " << std::endl;<ESC>14hi
+" imap <buffer> <C-e> std::cerr << "mpj-debug: " << std::endl;<ESC>14hi
+" 
+" " Print Standard
+" map  <buffer> <C-c> astd::cout << "" << std::endl;<ESC>14hi
+" imap <buffer> <C-c> std::cout << "" << std::endl;<ESC>14hi
 
 " Print varible
-map  <buffer> <C-f> bywostd::cerr << "<Esc>pa" << <Esc>pa << std::endl;
+" map  <buffer> <C-f> bywostd::cerr << "<Esc>pa" << <Esc>pa << std::endl;
 
 " Comment out word
-map  <buffer> <C-z> T i/*<ESC>ea*/<ESC>
+" map  <buffer> <C-z> T i/*<ESC>ea*/<ESC>
 
 " Function header comment
-map  <buffer> <C-n> yyPO//<ESC>kt(T d0i//<tab><ESC>t(;Do<ESC>j
+" map  <buffer> <C-n> yyPO//<ESC>kt(T d0i//<tab><ESC>t(;Do<ESC>j
 
 
 

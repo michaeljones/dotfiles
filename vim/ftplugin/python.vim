@@ -12,9 +12,9 @@ setlocal tabstop=4
 setlocal softtabstop=4
 setlocal shiftwidth=4
 
-map  <buffer> <C-e> asys.stderr.write("\n")<ESC>3hi
-imap <buffer> <C-e> sys.stderr.write("\n")<ESC>3hi
+" map  <buffer> <C-e> asys.stderr.write("\n")<ESC>3hi
+" imap <buffer> <C-e> sys.stderr.write("\n")<ESC>3hi
 
-map  <buffer> <C-c> aprint ""<ESC>i
-imap <buffer> <C-c> print ""<ESC>i
+" map  <buffer> <C-c> aprint ""<ESC>i
+" imap <buffer> <C-c> print ""<ESC>i
 
