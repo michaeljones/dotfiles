@@ -1,0 +1,32 @@
+#!/bin/sh 
+
+# This is a command to visualise all the commit objects in a git repository 
+# in gitk. The benefit is that you see all of the orphaned commit objects 
+# which you have left behind when rebasing or deleting branches.
+
+# I was interested in this partly as an educational tool to show people how
+# safe some of these history editing operations are, as the commits are all
+# still there. I'm also keen to see how useful it is as a kind of visual
+# alternative to the reflog command.  The reflog is awesome and I'm getting
+# better at using it but sometimes I find it hard to see exactly where the SHA1
+# that I'm trying to recover is. 
+
+# This loads up gitk with an argcmd that will list the SHA1s of all of the objects 
+# in a repository. This is overkill and will probably die or take forever on large 
+# repositories but I don't know a nice way to list only the commit objects. 
+# Plenty of room for improvement.
+
+# Find the root directory of the git repos
+topdir=`git rev-parse --show-toplevel 2> /dev/null`
+
+# If that's failed we're not in a repository, so exit with a nice message
+if [ $? -ne 0 ]
+then
+    echo Not in a git repository
+    exit
+fi
+
+# Start gitk with an argcmd that lists every object in the repository
+gitk --argscmd="find $topdir/.git/objects/?? -type f | sed -r \"s:($topdir/.git/objects/|/)::g\""
+
+
