@@ -1,3 +1,7 @@
+" Initialise Pathogen Setup
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+
 " Basic Preferences
 set nocompatible		" don't worry about Vi compatibility
 
