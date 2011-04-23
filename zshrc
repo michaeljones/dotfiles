@@ -16,8 +16,11 @@ stty dec ek
 stty stop ""
 stty start ""
 
-bindkey "^J" history-beginning-search-forward
-bindkey "^K" history-beginning-search-backward
+autoload history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey '^J' history-beginning-search-forward-end
+bindkey '^K' history-beginning-search-backward-end
 
 export MPJ_LOCAL_VIM_GEOMETRY="150x120+200+20"
 
