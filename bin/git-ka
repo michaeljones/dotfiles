@@ -1,4 +1,18 @@
+#!/bin/sh 
 
+# Find the root directory of the git repos
+topdir=`git rev-parse --show-toplevel 2> /dev/null`
+
+# If that's failed we're not in a repository, so exit with a nice message
+if [ $? -ne 0 ]
+then
+    echo Not in a git repository
+    exit
+fi
+
+# Running git status somehow helps us avoid false positives on files whose
+# timestamps have changed but whose contents have not been changed
 git status > /dev/null
+
 gitk --all&
 
