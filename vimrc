@@ -1,14 +1,13 @@
+" Basic Preferences
+set nocompatible		" don't worry about Vi compatibility
+
 " Initialise Pathogen Setup
 filetype off
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
-
 " Recommended in :help netrw-ml_get to silence ml_get errors
 let g:netrw_use_noswf= 0
-
-" Basic Preferences
-set nocompatible		" don't worry about Vi compatibility
 
 if has("vms")
 	set nobackup
@@ -183,7 +182,8 @@ map <F6> t,la<CR><ESC>
 map Y y$
 
 " Cleanup 
-map <C-m> :%s///g<CR>
+map <C-m> :%s/
+//g<CR>
 
 
 " Ctrl-P options
