@@ -14,6 +14,9 @@ else
 	set directory=/tmp/vim_swap,/tmp
 endif
 
+set list
+set listchars=tab:‣\ ,eol:¬,trail:·,precedes:.
+
 " Colour settings
 set background=dark
 colorscheme desert

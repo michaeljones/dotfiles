@@ -1,9 +1,9 @@
 " Vim color file
 " Maintainer:	Hans Fugal <hans@fugal.net>
-" Last Change:	$Date: 2003/07/24 00:57:11 $
-" Last Change:	$Date: 2003/07/24 00:57:11 $
+" Last Change:	$Date: 2004/06/13 19:30:30 $
+" Last Change:	$Date: 2004/06/13 19:30:30 $
 " URL:		http://hans.fugal.net/vim/colors/desert.vim
-" Version:	$Id: desert.vim,v 1.7 2003/07/24 00:57:11 fugalh Exp $
+" Version:	$Id: desert.vim,v 1.1 2004/06/13 19:30:30 vimboss Exp $
 
 " cool help screens
 " :he group-name
@@ -39,10 +39,10 @@ hi IncSearch	guifg=slategrey guibg=khaki
 "hi LineNr
 hi ModeMsg	guifg=goldenrod
 hi MoreMsg	guifg=SeaGreen
-hi NonText	guifg=LightBlue guibg=grey30
+hi NonText	guifg=grey30 guibg=grey20
 hi Question	guifg=springgreen
 hi Search	guibg=peru guifg=wheat
-hi SpecialKey	guifg=yellowgreen
+hi SpecialKey	guifg=grey30 guibg=grey20
 hi StatusLine	guibg=#c2bfa5 guifg=black gui=none
 hi StatusLineNC	guibg=#c2bfa5 guifg=grey50 gui=none
 hi Title	guifg=indianred
