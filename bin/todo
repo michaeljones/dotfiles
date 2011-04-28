@@ -1,10 +1,12 @@
 #!/bin/tcsh -f
 
+setenv MPJ_SKIP_TCSH 1
+
 if ( "$#argv" == "1" ) then
 	if ( "$argv[1]" == "-e" ) then
-		~/bin/gvim.py ~/.todo
+		gvim $MPJ_TODO_FILE
 	endif
 else
-	less ~/.todo
+	less $MPJ_TODO_FILE
 endif
 
