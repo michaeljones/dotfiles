@@ -8,17 +8,30 @@ setenv GREP_COLOR "36"
 setenv LS_COLORS "ow=01;34"
 setenv LESS "R"
 
-# Android
-setenv PATH "${PATH}:$HOME/software/android/latest/tools:$HOME/software/android/latest/platform-tools"
 
 # Development
 # -----------
-setenv PYTHONPATH ${HOME}'/box/lib/python2.6/site-packages:'${HOME}'/local/lib/python2.6/site-packages'
+
+if ( $?PYTHONPATH ) then
+	setenv PYTHONPATH "${PYTHONPATH}:${HOME}/box/lib/python2.6/site-packages:${HOME}/local/lib/python2.6/site-packages"
+else
+	setenv PYTHONPATH "${HOME}/box/lib/python2.6/site-packages:${HOME}/local/lib/python2.6/site-packages"
+endif
+
 setenv PYTHONSTARTUP ~/.python_startup.py
 
-setenv PATH "$HOME/local/git/bin:$HOME/bin:$HOME/box/bin:$HOME/local/bin:$PATH"
+if ( $?PATH ) then
+	setenv PATH "${PATH}:$HOME/local/git/bin:$HOME/bin:$HOME/box/bin:$HOME/local/bin:$PATH"
+else
+	setenv PATH "$HOME/local/git/bin:$HOME/bin:$HOME/box/bin:$HOME/local/bin:$PATH"
+endif
 
-setenv EMAIL "m.pricejones@gmail.com"
+# Android
+# -------
+setenv PATH "${PATH}:$HOME/software/android/latest/tools:$HOME/software/android/latest/platform-tools"
+
+# Go
+# --
 
 setenv GOROOT "$HOME/projects/go"
 setenv GOOS "linux"
