@@ -88,7 +88,7 @@ stty dec ek
 stty stop ""
 stty start ""
 
-bindkey -e
+# bindkey -e
 
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
@@ -123,6 +123,8 @@ compinit
 # Prevent zsh from asking "do you wish to see all N possibilities?" unless N > 9999
 LISTMAX=9999
 
+
+alias t="todo.sh"
 
 alias ls="ls --color=auto"
 alias rm="rm -i"
