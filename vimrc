@@ -40,6 +40,8 @@ set shiftwidth=4
 
 set vb t_vb=
 
+set grepprg=grep\ -IRn\ $*
+
 " autocmd!
 
 " Files specific tab settings
@@ -56,6 +58,7 @@ autocmd BufNewFile,BufRead *.lib set filetype=make
 autocmd BufNewFile,BufRead *.pkg set filetype=xml
 autocmd BufNewFile,BufRead *.log set nowrap
 autocmd BufNewFile,BufRead *.do set filetype=sh
+autocmd BufReadPost fugitive://* set bufhidden=delete
 
 augroup mkd
 autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>
@@ -79,10 +82,10 @@ set hlsearch			" enables highlighting for search results
 " MiniBufferExplorer Options
 " --------------------------
 " let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1 
-let g:miniBufExplVSplit = 20
+" let g:miniBufExplMapWindowNavArrows = 1
+" let g:miniBufExplMapCTabSwitchBufs = 1
+" let g:miniBufExplModSelTarget = 1 
+" let g:miniBufExplVSplit = 20
 " let g:miniBufExplorerDebugLevel = 10 
 " let g:miniBufExplorerDebugMode = 2 
 

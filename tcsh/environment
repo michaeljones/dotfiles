@@ -28,13 +28,14 @@ endif
 
 # Android
 # -------
-setenv PATH "${PATH}:$HOME/software/android/latest/tools:$HOME/software/android/latest/platform-tools"
+# Should be local
+# setenv PATH "${PATH}:$HOME/software/android/latest/tools:$HOME/software/android/latest/platform-tools"
 
 # Go
 # --
-
-setenv GOROOT "$HOME/projects/go"
-setenv GOOS "linux"
-setenv GOARCH "amd64"
-setenv GOBIN "$HOME/bin/go"
+# Should be local
+# setenv GOROOT "$HOME/projects/go"
+# setenv GOOS "linux"
+# setenv GOARCH "amd64"
+# setenv GOBIN "$HOME/bin/go"
 

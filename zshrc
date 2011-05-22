@@ -1,14 +1,55 @@
 setopt extendedglob
+
 zmodload -a colors
 zmodload -a autocomplete
 zmodload -a complist
+
 autoload colors ; colors
 
-export PATH="$PATH:$HOME/bin:$HOME/local/bin:$HOME/local/git/bin:$HOME/projects/tools/bin"
+#
+#	Environment
+#
+if [[ ${+PATH} -eq 1 ]] then
+	export PATH="${PATH}:$HOME/bin:$HOME/local/bin:$HOME/local/git/bin:$HOME/projects/tools/bin"
+else
+	export PATH="$HOME/bin:$HOME/local/bin:$HOME/local/git/bin:$HOME/projects/tools/bin"
+fi
 
-export PYTHONPATH="${HOME}/box/lib/python2.6/site-packages:${HOME}/local/lib/python2.6/site-packages:."
+
+if [[ ${+PYTHONPATH} -eq 1 ]] then
+	export PYTHONPATH="${PYTHONPATH}:${HOME}/box/lib/python2.6/site-packages:${HOME}/local/lib/python2.6/site-packages:."
+else
+	export PYTHONPATH="${HOME}/box/lib/python2.6/site-packages:${HOME}/local/lib/python2.6/site-packages:."
+fi
+
 export PYTHONSTARTUP=~/.python_startup.py
 
+export EDITOR="gvim -f"
+export EXR_DISPLAY_VIDEO_GAMMA="2.2"
+
+# Fall back local geometry
+if [[ ${+MPJ_LOCAL_VIM_GEOMETRY} -eq 0 ]] then
+	export MPJ_LOCAL_VIM_GEOMETRY="150x120+200+20"
+fi
+
+
+#
+#	Aliases
+#	
+
+# Should be local
+# alias rg="cd ~/projects"
+
+#
+#	Functions
+#
+gs() { grep -I -R -n --colour=auto $* * }
+ep() { echo `pwd`/$* }
+e() { env | grep $* }
+
+#
+#
+#
 setopt nocheckjobs
 
 stty sane
@@ -16,13 +57,14 @@ stty dec ek
 stty stop ""
 stty start ""
 
+bindkey -e
+
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 bindkey '^J' history-beginning-search-forward-end
 bindkey '^K' history-beginning-search-backward-end
 
-export MPJ_LOCAL_VIM_GEOMETRY="150x120+200+20"
 
 
 # I started with bash so I like having a $ sign in my prompt
@@ -38,7 +80,6 @@ HISTSIZE=1000
 SAVEHIST=1000
 setopt appendhistory extendedglob
 unsetopt notify
-bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/mike/.zshrc'
@@ -47,8 +88,6 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-export EDITOR="gvim -f"
-export EXR_DISPLAY_VIDEO_GAMMA="2.2"
 
 alias ls="ls --color=auto"
 alias rm="rm -i"
@@ -57,15 +96,12 @@ alias lt='ls -althr'
 alias du='du -h'
 alias df='df -h'
 
-alias spotify="padsp wine 'C:\\Spotify\spotify.exe' &"
-alias rg="cd ~/projects"
 
 alias c='jump; cd `cat /tmp/jump.tmp`'
 
 # Development
 # -----------
 # alias gs='grep -I -R -n --colour=auto \!:* *'
-gs() { grep -I -R -n --colour=auto $* * }
 alias rej='find . -type f -name "*.rej"'
 
 # Deviations
@@ -75,8 +111,6 @@ alias timestamp="date +%Y%m%d%H%M%S"
 
 # Non-specific
 # ------------
-alias ep='echo `pwd`/\!:1'
-alias e='env | grep \!*'
 alias m='make'
 alias mc='make clean'
 

@@ -2,12 +2,12 @@
 set dollar = '$'
 set prompt = "%{\033[m%}[%{\033[33m%}%n%{\033[m%}@%{\033[33m%}%m%{\033[m%}~%{\033[33m%}%@%{\033[m%}:%c]$dollar "
 
-if ( "1" == "1" ) then
+# if ( "$interactive" == "1" ) then
 	stty sane
 	stty dec ek
 	stty stop ""
 	stty start ""
-endif
+# endif
 
 bindkey "^L" history-search-backward
 bindkey "^K" history-search-forward
@@ -46,7 +46,6 @@ bindkey ^D list-or-eof
 # bindkey ^J history-search-forward
 # bindkey ^H history-search-backward
 
-
-bindkey ^k history-search-backward
-bindkey ^j history-search-forward
+bindkey "^M" history-search-forward
+bindkey "^K" history-search-backward
  
