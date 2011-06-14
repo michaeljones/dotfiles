@@ -9,19 +9,6 @@ autoload colors ; colors
 #
 #	Environment
 #
-# if [[ ${+PATH} -eq 1 ]] then
-# 	export PATH="${PATH}:$HOME/bin:$HOME/local/bin:$HOME/local/git/bin:$HOME/projects/tools/bin"
-# else
-# 	export PATH="$HOME/bin:$HOME/local/bin:$HOME/local/git/bin:$HOME/projects/tools/bin"
-# fi
-# 
-# 
-# if [[ ${+PYTHONPATH} -eq 1 ]] then
-# 	export PYTHONPATH="${PYTHONPATH}:${HOME}/box/lib/python2.6/site-packages:${HOME}/local/lib/python2.6/site-packages:."
-# else
-# 	export PYTHONPATH="${HOME}/box/lib/python2.6/site-packages:${HOME}/local/lib/python2.6/site-packages:."
-# fi
-
 export PYTHONSTARTUP=~/.python_startup.py
 
 export EDITOR="gvim -f"
