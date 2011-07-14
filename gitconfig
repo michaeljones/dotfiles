@@ -11,6 +11,7 @@
 	s = status
 	commmit = commit
 	rn = release-notes
+	mn = merge --no-ff
 [apply]
 	whitespace = strip
 [merge]

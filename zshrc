@@ -87,6 +87,10 @@ zstyle :compinstall filename '/home/mike/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
+#
+
+# Prevent zsh from asking "do you wish to see all N possibilities?" unless N > 9999
+LISTMAX=9999
 
 
 alias ls="ls --color=auto"

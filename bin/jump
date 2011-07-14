@@ -3,6 +3,7 @@
 from optparse import OptionParser
 
 import os
+import sys
 import curses
 import traceback
 import yaml
@@ -144,9 +145,9 @@ def app_loop(m):
             elif c == curses.KEY_DOWN:
                 m.up_down(1)
             elif c == curses.KEY_RIGHT:
-                pass
+                m.left_right(1)
             elif c == curses.KEY_LEFT:
-                pass
+                m.left_right(-1)
             elif c == curses.KEY_ENTER:
                 return
 
@@ -192,20 +193,22 @@ def main():
 
     m = monitor()
 
+    write = False
+
     try:
         m.screen = curses.initscr()         # Initialize curses
-        
+
         curses.noecho()                     # Turn off echoing of keys
         curses.cbreak()                     # and enter cbreak mode, 
                                             # where no buffering is performed on keyboard input
-        
+
         # In keypad mode, escape sequences for special keys
         # (like the cursor keys) will be interpreted and
         # a special value like curses.key_left will be returned
         m.screen.keypad(1)
-        
+
         write = app_loop(m)         # Enter the main loop
-        
+
         # Set everything back to normal
         m.screen.keypad(0)
         curses.echo()
@@ -228,8 +231,9 @@ def main():
         curses.endwin()
         traceback.print_exc()       # Print the exception
 
-if __name__ == "__main__":
+    return not write
 
-    main()
+if __name__ == "__main__":
+    sys.exit(main())
 
 

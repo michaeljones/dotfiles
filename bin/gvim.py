@@ -30,7 +30,7 @@ def main(argv):
     files = []
 
     # Setup file types to ignore
-    ignore = "~ .o .pdb .so .a .pyc .bks .bake -bin .png".split()
+    ignore = "~ .o .pdb .so .a .pyc .bks .bake -bin .png .cc.d".split()
 
     flags = ""
     line_number = ""

@@ -17,7 +17,7 @@ alias name 'echo -n "\033]2;\!:*\007"'
 
 # Navigation
 # ----------
-alias c '~/bin/jump; cd `cat /tmp/jump.tmp`; echo Change directory: `cat /tmp/jump.tmp`; zsh'
+alias c '~/bin/jump && cd `cat /tmp/jump.tmp` && echo Change directory: `cat /tmp/jump.tmp` && zsh'
 alias cb 'echo -n \!:* | xsel -b'
 alias eb 'echo -n `pwd`/\!:* | xsel -b'
 
