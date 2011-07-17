@@ -1,0 +1,21 @@
+// nedit.mel 
+// Simple mel script to open a the mel file containing a given proc in nedit. Also works if given a mel
+//
+// Changelog
+// 30/01 [mzeller] initial version
+//
+//
+global proc edit (string $theProc)
+{
+	string $location = `whatIs $theProc`;
+	$location = `match "/.+\.mel" $location`;
+    string $editor = getenv( "EDITOR" );
+	string $cmd = ( $editor + " " + $location+" &"); // FC6 nedit needs this flag to use existing windows
+	if ( $location != "" ) {
+		//echo $cmd;
+  		system($cmd);
+  	}
+	else
+  		warning "Cannot find this procedure!";
+}
+

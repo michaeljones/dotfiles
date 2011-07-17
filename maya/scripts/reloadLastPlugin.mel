@@ -1,0 +1,15 @@
+
+global string $g_mpj_lastPluginReloaded;
+
+global proc reloadLastPlugin()
+{
+    global string $g_mpj_lastPluginReloaded;
+
+    if ( $g_mpj_lastPluginReloaded == "" )
+    {
+        error( "ReloadLastPlugin: No reload plugin history found. Please use reloadPlugin( <plugin name> )");
+    }
+
+    reloadPlugin( $g_mpj_lastPluginReloaded );
+}
+

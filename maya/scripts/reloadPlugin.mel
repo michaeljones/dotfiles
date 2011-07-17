@@ -1,0 +1,16 @@
+
+global string $g_mpj_lastPluginReloaded;
+
+global proc reloadPlugin( string $name )
+{
+    print ( "// Unloading " + $name + ".so\n" );
+    unloadPlugin ( $name + ".so" );
+
+    print ( "// Loading " + $name + ".so\n" );
+    loadPlugin ( $name + ".so" );
+
+    // Store plugin name in a global variable 
+    global string $g_mpj_lastPluginReloaded;
+    $g_mpj_lastPluginReloaded = $name;
+}
+

@@ -1,0 +1,9 @@
+
+global proc loadLastScene()
+{
+	string $RecentFilesList[] = `optionVar -q "RecentFilesList"`;
+
+    // Load the last file in the list (the most recent)
+    file -f -o $RecentFilesList[size($RecentFilesList) - 1];
+}
+
