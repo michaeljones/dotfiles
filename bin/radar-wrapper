@@ -1,9 +1,0 @@
-#!/bin/tcsh
-
-need qt-4.7.2_64
-need pyside_qt4.7_py26-1.0.1_64
-need radar-2.0
-
-rehash
-
-radar &
