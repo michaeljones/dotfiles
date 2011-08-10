@@ -12,8 +12,9 @@
 	commmit = commit
 	rn = release-notes
 	mn = merge --no-ff
+	fix-whitespace = !git diff | git apply --whitespace=fix
 [apply]
-	whitespace = strip
+	whitespace = fix
 [merge]
 	tool = meld
 [color]

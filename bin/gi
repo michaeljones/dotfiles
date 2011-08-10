@@ -1,1 +1,2 @@
+echo Autocorrecting to: git `echo $* | sed 's/^.//g'`
 git `echo $* | sed 's/^.//g'`

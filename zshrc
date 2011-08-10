@@ -48,6 +48,21 @@ ep() { echo `pwd`/$* }
 e() { env | grep $* }
 
 #
+#   Hooks
+#
+command_not_found_handler() {
+    if [ `echo $1 | cut -b1-3` = "git" ]
+    then
+        first=$1
+        shift
+        echo Autocorrecting to: git `echo $first | sed 's/git//'`$*
+        git `echo $first | sed 's/git//'`$*
+        return 0
+    fi
+
+    return 1
+}
+#
 #
 #
 setopt nocheckjobs
@@ -133,3 +148,15 @@ alias mp='mplayer'
 alias am="amarok; amarok"
 
 
+# Git HEAD^ aliases
+# -----------------
+alias -g 'HEAD^'='"HEAD^"'
+alias -g 'HEAD^^'='"HEAD^^"'
+alias -g 'HEAD^^^'='"HEAD^^^"'
+alias -g 'HEAD^^^^'='"HEAD^^^^"'
+alias -g 'HEAD^^^^^'='"HEAD^^^^^"'
+alias -g 'HEAD^^^^^^'='"HEAD^^^^^^"'
+alias -g 'HEAD^^^^^^^'='"HEAD^^^^^^^"'
+alias -g 'HEAD^^^^^^^^'='"HEAD^^^^^^^^"'
+alias -g 'HEAD^^^^^^^^^'='"HEAD^^^^^^^^^"'
+alias -g 'HEAD^^^^^^^^^^'='"HEAD^^^^^^^^^^"'
