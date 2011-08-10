@@ -6,18 +6,27 @@ if exists("b:did_ftplugin")
   finish
 endif
 
-set expandtab
-
 setlocal expandtab
 
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 
+setlocal textwidth=100
+
+" Alternate (a.vim) configuration
+"
+let g:alternateExtensions_hh = "cc"
+let g:alternateExtensions_cc = "hh"
+
+" Alternate (a.vim) binding
+"
+nmap <buffer> <leader>a :A<CR>
+
 " Print Error
-" map  <buffer> <C-e> astd::cerr << "mpj-debug: " << std::endl;<ESC>14hi
-" imap <buffer> <C-e> std::cerr << "mpj-debug: " << std::endl;<ESC>14hi
-" 
+map  <buffer> <leader>e astd::cerr << "mpj-debug: " << std::endl;<ESC>14hi
+imap <buffer> <leader>e std::cerr << "mpj-debug: " << std::endl;<ESC>14hi
+
 " " Print Standard
 " map  <buffer> <C-c> astd::cout << "" << std::endl;<ESC>14hi
 " imap <buffer> <C-c> std::cout << "" << std::endl;<ESC>14hi

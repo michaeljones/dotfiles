@@ -14,6 +14,17 @@ else
 	set directory=/tmp/vim_swap,/tmp
 endif
 
+" Configure our map leader
+let mapleader = ","
+
+" Always show the status line
+set laststatus=2
+
+" Highlight column after textwidth
+set colorcolumn=+1
+
+" Show white space (tabs, trailing spaces and eof chars)
+" From Vim Casts
 set list
 set listchars=tab:‣\ ,eol:¬,trail:·,precedes:.
 
@@ -78,6 +89,10 @@ filetype plugin indent on
 set backspace=eol,start,indent
 set incsearch			" searches as you type instead of waiting for <CR>
 set hlsearch			" enables highlighting for search results
+
+" XP Template Options
+" -------------------
+let g:xptemplate_snippet_folders=['~/.vim/xptemplate']
 
 " MiniBufferExplorer Options
 " --------------------------
@@ -152,7 +167,7 @@ map <F12> <c-s>:make<CR>
 imap <F12> <c-s><ESC>:make<CR>
 
 " Put function parameter on a new line
-map <F6> t,;a<CR><ESC>
+map <F6> t,la<CR><ESC>
 
 " Preferable behaviour
 map Y y$
