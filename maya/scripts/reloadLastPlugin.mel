@@ -4,12 +4,26 @@ global string $g_mpj_lastPluginReloaded;
 global proc reloadLastPlugin()
 {
     global string $g_mpj_lastPluginReloaded;
+    string $lastPlugin = $g_mpj_lastPluginReloaded;
 
-    if ( $g_mpj_lastPluginReloaded == "" )
+    if ( $lastPlugin == "" )
     {
-        error( "ReloadLastPlugin: No reload plugin history found. Please use reloadPlugin( <plugin name> )");
+        string $plugin = `promptDialog
+                                -button "Reload"
+                                -button "Cancel"
+                                -cancelButton "Cancel"
+                                -defaultButton "Reload"
+                                -message "No reload plugin history found. Please enter a plugin name"`;
+        if ( $plugin != "Cancel" )
+        {
+            $lastPlugin = `promptDialog -q -text`;
+        }
+        else
+        {
+            return;
+        }
     }
 
-    reloadPlugin( $g_mpj_lastPluginReloaded );
+    reloadPlugin( $lastPlugin );
 }
 
