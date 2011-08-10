@@ -16,10 +16,10 @@ endif
 
 echo Looking for git version
 # Find the link in it
-grep ">tar.gz<" index.html | sed 's/^.*http/http/g' | sed 's/">.*$//g' > url
+grep "tar.bz2" index.html | grep "Source<" | sed 's/^.*http/http/g' | sed 's/">.*$//g' > url
 
 set tarball = `cat url | sed 's/^.*\///g'` 
-set gitversion = `cat url | sed 's/^.*\///g' | sed 's/.tar.gz//g'`
+set gitversion = `cat url | sed 's/^.*\///g' | sed 's/.tar.bz2//g'`
 
 echo Found $gitversion
 
@@ -38,7 +38,7 @@ cat url | xargs wget >& /dev/null
 
 echo Extracting
 # Extract it
-tar zxf $tarball
+tar jxf $tarball
 
 # Change into the extracted directory
 cd $gitversion
