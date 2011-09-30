@@ -85,16 +85,14 @@ def main(argv):
 
         if serverlist:
             flags += " --remote-silent "
-            line_number = ""
 
     os.putenv( "GCC_NO_HIGHLIGHT", "1" )
     os.putenv( "MPJ_SKIP_TCSH", "1" )
 
     local_geometry = os.environ[ "MPJ_LOCAL_VIM_GEOMETRY" ]
 
-
     # Run the command
-    command = "gvim -geom %s %s %s%s" % ( local_geometry, flags, " ".join(files), line_number )
+    command = "gvim -geom %s %s %s %s" % ( local_geometry, flags, line_number, " ".join(files) )
     os.system(command)
 
 
