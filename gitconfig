@@ -13,6 +13,7 @@
 	rn = release-notes
 	mn = merge --no-ff
 	fix-whitespace = !git diff | git apply --whitespace=fix
+	cn = commit --no-verify
 [apply]
 	whitespace = fix
 [merge]
