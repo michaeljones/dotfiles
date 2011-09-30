@@ -16,3 +16,6 @@
 [submodule "vim/bundle/xptemplate"]
 	path = vim/bundle/xptemplate
 	url = https://github.com/drmingdrmer/xptemplate.git
+[submodule "vim/bundle/command-t"]
+	path = vim/bundle/command-t
+	url = https://github.com/wincent/Command-T.git
