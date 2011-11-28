@@ -9,7 +9,13 @@ global proc reloadPlugin( string $name )
     print ( "// Loading " + $name + ".so\n" );
     loadPlugin ( $name + ".so" );
 
+    // Try to set it to auto-load
+    //
+    string $path = `pluginInfo -query -path $name`;
+    pluginInfo -edit -autoload true $path;
+
     // Store plugin name in a global variable 
+    //
     global string $g_mpj_lastPluginReloaded;
     $g_mpj_lastPluginReloaded = $name;
 }

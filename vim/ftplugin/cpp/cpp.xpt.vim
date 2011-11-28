@@ -20,7 +20,13 @@ XSET symbol=headerSymbol()
 #ifndef `symbol^
 #define `symbol^
 
+namespace weta {
+namespace `namespaceName^ {
+
 `cursor^
+
+}
+}
 
 #endif // `symbol^
 

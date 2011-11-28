@@ -8,6 +8,8 @@ URxvt.scrollBar: False
 URxvt.linespace: 5
 URxvt.internalBorder: 3
 
+URxvt.print-pipe: cat > $(mktemp urxvt.XXXXXX)
+
 
 !    URxvt config
 !
@@ -45,7 +47,8 @@ URxvt*color8:      #474747
 URxvt*color1:      #CD5C5C
 URxvt*color9:      #8E1A00
 ! Green
-URxvt*color2:      #299E1B
+! URxvt*color2:      #299E1B
+URxvt*color2:      #36cf23
 URxvt*color10:     #77E768
 ! Yellow
 URxvt*color3:      #96833F
@@ -54,7 +57,8 @@ URxvt*color11:     #D0B249
 URxvt*color4:      #2467AD
 URxvt*color12:     #6B90EE
 ! Purple
-URxvt*color5:      #655272
+! URxvt*color5:    #655272
+URxvt*color5:      #9378a6
 URxvt*color13:     #9F75BA
 ! Cyan
 URxvt*color6:      #92B19E
@@ -63,3 +67,6 @@ URxvt*color14:     #A1CDCD
 URxvt*color7:      #FFFFFF
 URxvt*color15:     #97927C
 
+! xosview configuration
+!
+xosview*interrupts: False

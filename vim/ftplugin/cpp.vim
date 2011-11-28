@@ -8,9 +8,9 @@ endif
 
 setlocal expandtab
 
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+setlocal tabstop=4
+setlocal softtabstop=4
+setlocal shiftwidth=4
 
 setlocal textwidth=100
 
@@ -26,6 +26,9 @@ nmap <buffer> <leader>a :A<CR>
 " Print Error
 map  <buffer> <leader>e astd::cerr << "mpj-debug: " << std::endl;<ESC>14hi
 imap <buffer> <leader>e std::cerr << "mpj-debug: " << std::endl;<ESC>14hi
+
+map  <buffer> <leader>s typedef std::tr1::shared_ptr<  ><ESC>hi
+imap <buffer> <leader>s typedef std::tr1::shared_ptr<  ><ESC>hi
 
 " " Print Standard
 " map  <buffer> <C-c> astd::cout << "" << std::endl;<ESC>14hi

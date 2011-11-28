@@ -6,7 +6,7 @@ setenv EDITOR "gvim -f"
 setenv WINEDITOR "gvim -f"
 setenv GREP_COLOR "36"
 setenv LS_COLORS "ow=01;34"
-setenv LESS "R"
+setenv LESS "Rx4"				# x4 = tab stop 4"
 
 
 # Development
