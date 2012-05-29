@@ -14,6 +14,8 @@ setlocal shiftwidth=4
 
 setlocal textwidth=100
 
+setlocal tags=./ctags;/
+
 " Alternate (a.vim) configuration
 "
 let g:alternateExtensions_hh = "cc"
