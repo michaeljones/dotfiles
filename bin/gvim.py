@@ -78,13 +78,23 @@ def main(argv):
 
     files.sort()
 
-    # Configure command line options
-    if opt.server:
-        command = "gvim --serverlist"
-        serverlist = commands.getoutput(command)
+    # Get the current desktop number we're on
+    command = "qdbus org.kde.kwin /KWin currentDesktop"
+    desktop = commands.getoutput(command)
 
-        if serverlist:
-            flags += " --remote-silent "
+    # g alias provides --server and gg doesn't so use MPJGVIM1 for g and MPJGVIM2 for gg
+    name = "MPJGVIMDESKTOP2-%s" % desktop
+    if opt.server:
+        name = "MPJGVIMDESKTOP1-%s" % desktop
+
+    # Configure command line options
+    command = "gvim --serverlist"
+    serverlist = commands.getoutput(command)
+
+    # Check if the server we're after is running. If so join it with remote
+    # silent otherwise leave it out so that we become the server
+    if name in serverlist:
+        flags += " --remote-silent"
 
     os.putenv( "GCC_NO_HIGHLIGHT", "1" )
     os.putenv( "MPJ_SKIP_TCSH", "1" )
@@ -92,7 +102,7 @@ def main(argv):
     local_geometry = os.environ[ "MPJ_LOCAL_VIM_GEOMETRY" ]
 
     # Run the command
-    command = "gvim -geom %s %s %s %s" % ( local_geometry, flags, line_number, " ".join(files) )
+    command = "gvim --servername %s -geom %s %s %s %s" % ( name, local_geometry, flags, line_number, " ".join(files) )
     os.system(command)
 
 
