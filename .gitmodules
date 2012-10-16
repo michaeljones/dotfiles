@@ -22,3 +22,6 @@
 [submodule "vim/bundle/clang"]
 	path = vim/bundle/clang
 	url = https://github.com/Rip-Rip/clang_complete.git
+[submodule "vim/bundle/gdbfromvim"]
+	path = vim/bundle/gdbfromvim
+	url = https://github.com/skibyte/gdb-from-vim.git
