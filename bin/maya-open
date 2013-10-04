@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# To debug redirect output to a tmp file
+
+file=`echo $* | sed 's/maya:\/\///'`
+/usr/bin/python /usr/home/mjones/bin/maya-command-port open-file $file
+

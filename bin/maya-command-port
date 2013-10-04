@@ -1,0 +1,29 @@
+#!/usr/bin/env python
+
+import socket
+import sys
+
+print "anything at all"
+
+HOST = 'localhost'    # The remote host
+PORT = 5008          # The same port as used by the server
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+action = sys.argv[1]
+print action
+
+if action == "open-file":
+
+    filename = sys.argv[2]
+
+    print filename
+
+    s.connect((HOST, PORT))
+    s.sendall('print "// Opening file: %s\\n";\n' % filename )
+    s.sendall('file -o -f "%s";' % filename )
+
+    s.close()
+
+    print "close"
+
+

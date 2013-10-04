@@ -1,0 +1,14 @@
+#!/bin/zsh -f
+
+if [ -z "$MAYA_MAJOR_VER" ]; then
+	echo MAYA_MAJOR_VER seems to be unset. Unable to figure out which suppression file to use
+	exit
+fi
+
+
+# Run with current suppressions file and dump suppression description for each encountered issue
+maya \
+	-d valgrind \
+	-dbgArg "--suppressions='/vol/weta/src/mjones/dev/suppressions/maya/$MAYA_MAJOR_VER/maya.supp'" \
+	-dbgArg "--gen-suppressions=all"
+

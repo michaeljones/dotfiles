@@ -1,0 +1,19 @@
+
+global proc boundingBoxFromNode( string $node )
+{
+    float $bb[] = `xform -q -ws -bb $node`;
+
+    float $sizeX = $bb[3] - $bb[0];
+    float $sizeY = $bb[4] - $bb[1];
+    float $sizeZ = $bb[5] - $bb[2];
+
+    float $centerX = $bb[0] + ( $sizeX / 2.0 );
+    float $centerY = $bb[1] + ( $sizeY / 2.0 );
+    float $centerZ = $bb[2] + ( $sizeZ / 2.0 );
+
+    string $results[] = `polyCube`;
+
+    xform -translation $centerX $centerY $centerZ $results[0];
+    xform -scale $sizeX $sizeY $sizeZ $results[0];
+}
+

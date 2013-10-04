@@ -1,0 +1,32 @@
+
+global proc visibilityAB()
+{
+    global string $g_mpj_visibilityA;
+    global string $g_mpj_visibilityB;
+
+    string $selection[] = `ls -selection`;
+
+    if ( size( $selection ) > 1 )
+    {
+        $g_mpj_visibilityA = $selection[0];
+        $g_mpj_visibilityB = $selection[1];
+    }
+
+    if ( $g_mpj_visibilityA == "" )
+    {
+        print "Nothing stored and nothing selected.";
+        return;
+    }
+
+    if ( `getAttr ( $g_mpj_visibilityA + ".visibility" )` == 1 )
+    {
+        setAttr ( $g_mpj_visibilityA + ".visibility" ) 0;
+        setAttr ( $g_mpj_visibilityB + ".visibility" ) 1;
+    }
+    else
+    {
+        setAttr ( $g_mpj_visibilityA + ".visibility" ) 1;
+        setAttr ( $g_mpj_visibilityB + ".visibility" ) 0;
+    }
+}
+

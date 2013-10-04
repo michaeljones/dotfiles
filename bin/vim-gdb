@@ -1,0 +1,15 @@
+#!/bin/sh
+
+export PYTHONPATH=${PYTHONPATH}:${HOME}/local/lib/python2.6/site-packages/
+
+cd /vol/bob/src/dev/Lumberjack/work/mjones-trunk/src
+
+cat << ENDCAT > /tmp/vim-gdb.startup
+let g:gdb_from_vim_app = '$*'
+let g:gdb_from_vim_path = '/vol/apps/gdb-7.4_python2.6.5_64/bin/gdb'
+:GdbFromVimRun
+ENDCAT
+
+gvim -S /tmp/vim-gdb.startup
+
+

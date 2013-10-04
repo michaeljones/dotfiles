@@ -1,0 +1,11 @@
+
+set guioptions+=B
+" set gui=none,tabs,bookmarks
+
+map <BS> H
+
+map <c-j> :tabprevious<CR>
+map <c-;> :tabnext<CR>
+
+imap <c-j> :tabprevious<CR>
+imap <c-;> :tabnext<CR>
