@@ -1,6 +1,7 @@
 XPTemplate priority=personal
 
 XPT class   " class ..
+
 class `className^
 {
 public:
@@ -16,6 +17,7 @@ private:
 ..XPT
 
 XPT once wrap	" #ifndef .. #define ..
+
 XSET symbol=headerSymbol()
 #ifndef `symbol^
 #define `symbol^
@@ -31,4 +33,5 @@ namespace `namespaceName^ {
 #endif // `symbol^
 
 ..XPT
+
 

@@ -1,4 +1,4 @@
-setopt extendedglob
+# setopt extendedglob
 
 zmodload -a colors
 zmodload -a autocomplete
@@ -9,18 +9,18 @@ autoload colors ; colors
 #
 #	Environment
 #
-if [[ ${+PATH} -eq 1 ]] then
-	export PATH="${PATH}:$HOME/bin:$HOME/local/bin:$HOME/local/git/bin:$HOME/projects/tools/bin"
-else
-	export PATH="$HOME/bin:$HOME/local/bin:$HOME/local/git/bin:$HOME/projects/tools/bin"
-fi
-
-
-if [[ ${+PYTHONPATH} -eq 1 ]] then
-	export PYTHONPATH="${PYTHONPATH}:${HOME}/box/lib/python2.6/site-packages:${HOME}/local/lib/python2.6/site-packages:."
-else
-	export PYTHONPATH="${HOME}/box/lib/python2.6/site-packages:${HOME}/local/lib/python2.6/site-packages:."
-fi
+# if [[ ${+PATH} -eq 1 ]] then
+# 	export PATH="${PATH}:$HOME/bin:$HOME/local/bin:$HOME/local/git/bin:$HOME/projects/tools/bin"
+# else
+# 	export PATH="$HOME/bin:$HOME/local/bin:$HOME/local/git/bin:$HOME/projects/tools/bin"
+# fi
+# 
+# 
+# if [[ ${+PYTHONPATH} -eq 1 ]] then
+# 	export PYTHONPATH="${PYTHONPATH}:${HOME}/box/lib/python2.6/site-packages:${HOME}/local/lib/python2.6/site-packages:."
+# else
+# 	export PYTHONPATH="${HOME}/box/lib/python2.6/site-packages:${HOME}/local/lib/python2.6/site-packages:."
+# fi
 
 export PYTHONSTARTUP=~/.python_startup.py
 
@@ -46,6 +46,22 @@ fi
 gs() { grep -I -R -n --colour=auto $* * }
 ep() { echo `pwd`/$* }
 e() { env | grep $* }
+mv() { 
+
+# Check if we're in a git directory
+if git rev-parse --git-dir > /dev/null 2>&1; then
+	if read -q "answer?You are in a git repository did you mean to use git mv? "; then
+		echo
+		git mv $*
+	else
+		echo
+		sh -c "mv $*"
+	fi
+else
+	sh -c "mv $*"
+fi
+
+}
 
 #
 #   Hooks
@@ -91,8 +107,8 @@ PROMPT="%{$fg[white]%}[%{$fg[yellow]%}%n%{$fg[white]%}@%{$fg[yellow]%}%M%{$fg[wh
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.zhistfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=10000
+SAVEHIST=10000
 setopt appendhistory extendedglob
 unsetopt notify
 # End of lines configured by zsh-newuser-install

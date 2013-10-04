@@ -102,7 +102,7 @@ def main(argv):
     local_geometry = os.environ[ "MPJ_LOCAL_VIM_GEOMETRY" ]
 
     # Run the command
-    command = "gvim --servername %s -geom %s %s %s %s" % ( name, local_geometry, flags, line_number, " ".join(files) )
+    command = "PYTHONPATH="" gvim --servername %s -geom %s %s %s %s" % ( name, local_geometry, flags, line_number, " ".join(files) )
     os.system(command)
 
 

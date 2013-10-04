@@ -3,6 +3,10 @@ filetype off
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
+
+" Recommended in :help netrw-ml_get to silence ml_get errors
+let g:netrw_use_noswf= 0
+
 " Basic Preferences
 set nocompatible		" don't worry about Vi compatibility
 
@@ -13,6 +17,9 @@ else
 	set backupdir=/tmp/vim_backups,/tmp
 	set directory=/tmp/vim_swap,/tmp
 endif
+
+" Disable clang for the moment
+let g:clang_complete_auto = 0
 
 " Configure our map leader
 let mapleader = ","
@@ -70,6 +77,9 @@ autocmd BufNewFile,BufRead *.pkg set filetype=xml
 autocmd BufNewFile,BufRead *.log set nowrap
 autocmd BufNewFile,BufRead *.do set filetype=sh
 autocmd BufReadPost fugitive://* set bufhidden=delete
+autocmd BufReadPost weekly setlocal expandtab
+autocmd BufReadPost *.dojo setlocal expandtab ft=yaml
+autocmd BufReadPost *.yaml setlocal expandtab
 
 augroup mkd
 autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>
@@ -174,4 +184,12 @@ map Y y$
 
 " Cleanup 
 map <C-m> :%s///g<CR>
+
+
+" Ctrl-P options
+" --------------
+
+let g:ctrlp_map = '<leader>t'
+let g:ctrlp_working_path_mode = ''
+
 
