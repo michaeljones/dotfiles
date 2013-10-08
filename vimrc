@@ -73,6 +73,7 @@ autocmd BufNewFile,BufRead *.mako set filetype=mako
 autocmd BufNewFile,BufRead *.sl set filetype=sl
 autocmd BufNewFile,BufRead *.lib set filetype=make
 autocmd BufNewFile,BufRead *.pkg set filetype=xml
+autocmd BufNewFile,BufRead *.hs set filetype=haskell
 autocmd BufNewFile,BufRead *.log set nowrap
 autocmd BufNewFile,BufRead *.do set filetype=sh
 autocmd BufReadPost fugitive://* set bufhidden=delete

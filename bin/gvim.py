@@ -82,6 +82,9 @@ def main(argv):
     command = "qdbus org.kde.kwin /KWin currentDesktop"
     desktop = commands.getoutput(command)
 
+    if desktop not in ("1", "2", "3"):
+        desktop = "1"
+
     # g alias provides --server and gg doesn't so use MPJGVIM1 for g and MPJGVIM2 for gg
     name = "MPJGVIMDESKTOP2-%s" % desktop
     if opt.server:
