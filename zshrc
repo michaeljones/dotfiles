@@ -14,6 +14,7 @@ export PYTHONSTARTUP=~/.python_startup.py
 export EDITOR="gvim -f"
 export EXR_DISPLAY_VIDEO_GAMMA="2.2"
 
+
 # Fall back local geometry
 if [[ ${+MPJ_LOCAL_VIM_GEOMETRY} -eq 0 ]] then
 	export MPJ_LOCAL_VIM_GEOMETRY="150x120+200+20"
@@ -21,34 +22,25 @@ fi
 
 
 #
-#	Aliases
-#	
-
-# Should be local
-# alias rg="cd ~/projects"
-
-#
 #	Functions
 #
-gs() { grep -I -R -n --colour=auto $* * }
-ep() { echo `pwd`/$* }
-e() { env | grep $* }
-mv() { 
-
-# Check if we're in a git directory
-if git rev-parse --git-dir > /dev/null 2>&1; then
-	if read -q "answer?You are in a git repository did you mean to use git mv? "; then
-		echo
-		git mv $*
+gs() {
+	# Use git grep inside git repositories. Use normal grep outside.
+	in_git_dir=`git rev-parse --is-inside-work-tree 2> /dev/null`;
+	if [ "$in_git_dir" = "true" ]; then
+		git grep -n --color $* *;
 	else
-		echo
-		sh -c "mv $*"
-	fi
-else
-	sh -c "mv $*"
-fi
-
+		grep -I -R -n --colour=auto $* *;
+	fi;
 }
+gss() {
+	# Use grep all the time (incase we want to normal grep inside a git repos)
+	grep -I -R -n --colour=auto $* *;
+}
+
+ep() { echo `pwd`/$* }
+
+e() { env | grep $* }
 
 #
 #   Hooks
@@ -65,9 +57,9 @@ command_not_found_handler() {
 
     return 1
 }
-#
-#
-#
+
+
+
 setopt nocheckjobs
 
 stty sane
