@@ -93,6 +93,7 @@ HISTFILE=~/.zhistfile
 HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory extendedglob
+setopt hist_ignore_space
 unsetopt notify
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
