@@ -140,8 +140,8 @@ alias mc='make clean'
 
 # Text editing
 # ------------
-alias g="$HOME/bin/gvim.py --server"
-alias gg="$HOME/bin/gvim.py "
+alias g="$HOME/bin/gvim-wrapper --server"
+alias gg="$HOME/bin/gvim-wrapper"
 alias gt='opentree.tcsh'
 alias vi='vim'
 alias v='vim'

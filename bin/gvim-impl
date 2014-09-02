@@ -44,6 +44,7 @@ def main(argv):
 
             args = [file_]
             line_number += " +" + line + " "
+            line_number = " +23 "
 
 
     # Process all the args which should be file names
@@ -105,7 +106,8 @@ def main(argv):
     local_geometry = os.environ[ "MPJ_LOCAL_VIM_GEOMETRY" ]
 
     # Run the command and send output (there are only errors) to /dev/null
-    command = "PYTHONPATH="" gvim --servername %s -geom %s %s %s %s > /dev/null 2> /dev/null" % ( name, local_geometry, flags, line_number, " ".join(files) )
+    command = """PYTHONPATH='' gvim --servername %s -geom %s %s %s %s > /dev/null 2> /dev/null;
+                 wmctrl -a %s""" % ( name, local_geometry, flags, line_number, " ".join(files), name )
     os.system(command)
 
 
