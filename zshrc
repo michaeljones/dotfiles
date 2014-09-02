@@ -75,14 +75,18 @@ zle -N history-beginning-search-forward-end history-search-end
 bindkey '^J' history-beginning-search-forward-end
 bindkey '^K' history-beginning-search-backward-end
 
-
+function virtualenv_prompt() {
+    if [ -n "$VIRTUAL_ENV" ]; then
+        echo "(${VIRTUAL_ENV##*/})"
+    fi
+}
 
 # I started with bash so I like having a $ sign in my prompt
 set dollar = '$'
 # PROMPT="%{\033[m%}[%{\033[33m%}%n%{\033[m%}@%{\033[33m%}%m%{\033[m%}~%{\033[33m%}%@%{\033[m%}:%c]$dollar "
 orange="%{$fg[blue]%}"
 # PROMPT="[%n@%M~%T:%c]$ "
-PROMPT="%{$fg[white]%}[%{$fg[yellow]%}%n%{$fg[white]%}@%{$fg[yellow]%}%M%{$fg[white]%}~%{$fg[yellow]%}%T%{$fg[white]%}:%c]$ "
+PROMPT="$(virtualenv_prompt)%{$fg[white]%}[%{$fg[yellow]%}%n%{$fg[white]%}@%{$fg[yellow]%}%M%{$fg[white]%}~%{$fg[yellow]%}%T%{$fg[white]%}:%c]$ "
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.zhistfile
