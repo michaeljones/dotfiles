@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# Wrapper script to take us to home before launching terminal
+# For some reason ubuntu doesn't have the desktop's pwd as home
+cd
+
+/usr/bin/urxvt &
+
+sleep 0.1
+
+# Can't seem to get the geometry flag on urxvt to behave properly so we resort
+# to forcing its size after opening it. We do a "wmctrl -l" to get the list and
+# assume the newly opened urxvt is at the bottom.
+
+for id in `wmctrl -l | grep "urxvt$" | tail -1 | cut -d" " -f1`
+do
+	wmctrl -i -r $id -e 0,200,50,1300,850
+done
+
