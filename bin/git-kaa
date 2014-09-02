@@ -27,6 +27,6 @@ then
 fi
 
 # Start gitk with an argcmd that lists every object in the repository
-gitk --argscmd="find $topdir/.git/objects/?? -type f | sed -r \"s:($topdir/.git/objects/|/)::g\""
+gitk --argscmd="find $topdir/.git/objects/?? -type f | sed -r \"s:($topdir/.git/objects/|/)::g\"" &
 
 

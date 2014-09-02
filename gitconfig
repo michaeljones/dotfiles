@@ -11,7 +11,7 @@
 	s = status
 	commmit = commit
 	rn = release-notes
-	mn = merge --no-ff
+	mn = merge --no-ff --no-edit
 	fix-whitespace = !git diff | git apply --whitespace=fix
 	cn = commit --no-verify
 [apply]
@@ -25,3 +25,5 @@
 	default = nothing
 [gc]
 	auto = 0
+[rebase]
+	autosquash = true
