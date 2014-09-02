@@ -76,10 +76,12 @@ autocmd BufNewFile,BufRead *.pkg set filetype=xml
 autocmd BufNewFile,BufRead *.hs set filetype=haskell
 autocmd BufNewFile,BufRead *.log set nowrap
 autocmd BufNewFile,BufRead *.do set filetype=sh
+autocmd BufNewFile,BufRead *.less set filetype=css
 autocmd BufReadPost fugitive://* set bufhidden=delete
 autocmd BufReadPost weekly setlocal expandtab
 autocmd BufReadPost *.dojo setlocal expandtab ft=yaml
 autocmd BufReadPost *.yaml setlocal expandtab
+autocmd BufReadPost *.cabal setlocal expandtab
 
 augroup mkd
 autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>
@@ -87,8 +89,8 @@ augroup END
 
 highlight Pmenu guibg=brown gui=bold
 
-set fileformat=unix
-set fileformats=unix
+" Allow unix & dos line endings
+set fileformats=unix,dos
 
 set history=50			" remember 50 commands
 set showcmd				" show currently typed sequence in the bottom right
