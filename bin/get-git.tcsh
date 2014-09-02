@@ -5,21 +5,8 @@ mkdir -p $installdir
 
 cd $installdir
 
-echo Getting latest information from git-scm.com
-# Grab the latest git page
-wget http://git-scm.com >& /dev/null
-
-if ( ! -e index.html ) then
-	echo Failed to retrieve index.html
-	exit
-endif
-
-echo Looking for git version
-# Find the link in it
-grep "tar.bz2" index.html | grep "Source<" | sed 's/^.*http/http/g' | sed 's/">.*$//g' > url
-
-set tarball = `cat url | sed 's/^.*\///g'` 
-set gitversion = `cat url | sed 's/^.*\///g' | sed 's/.tar.bz2//g'`
+set gitversion = 1.9.2
+set tarball = git-$gitversion.tar.gz
 
 echo Found $gitversion
 
@@ -34,14 +21,14 @@ endif
 
 echo Downloading tar ball
 # Download it
-cat url | xargs wget >& /dev/null
+wget https://www.kernel.org/pub/software/scm/git/git-$gitversion.tar.gz >& /dev/null
 
 echo Extracting
 # Extract it
-tar jxf $tarball
+tar xf $tarball
 
 # Change into the extracted directory
-cd $gitversion
+cd git-$gitversion
 
 echo Making git in `pwd`
 # Make and install it
@@ -54,16 +41,6 @@ echo Updating installed version information
 echo $gitversion > $installdir/latest
 
 cd $installdir
-
-echo Getting release notes
-# Release notes
-grep ">Release notes<" index.html | sed 's/^.*http/http/g' | sed 's/">.*$//g' > url
-cat url | xargs wget >& /dev/null
-
-set notes = `cat url | sed 's/^.*\///g'`
-
-echo Mailing release notes to $EMAIL
-cat $notes | mail -s "$gitversion has been installed" $EMAIL
 
 echo Cleaning up
 rm -f $installdir/index.html
