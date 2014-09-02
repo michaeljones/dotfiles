@@ -2,11 +2,11 @@
 
 from optparse import OptionParser
 
-import os
-import sys
-import curses
 import traceback
+import curses
 import yaml
+import sys
+import os
 
 class monitor:
     
