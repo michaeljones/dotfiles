@@ -76,12 +76,14 @@ autocmd BufNewFile,BufRead *.pkg set filetype=xml
 autocmd BufNewFile,BufRead *.hs set filetype=haskell
 autocmd BufNewFile,BufRead *.log set nowrap
 autocmd BufNewFile,BufRead *.do set filetype=sh
-autocmd BufNewFile,BufRead *.less set filetype=css
+autocmd BufNewFile,BufRead *.less set filetype=less
+autocmd BufNewFile,BufRead *.md set filetype=markdown
 autocmd BufReadPost fugitive://* set bufhidden=delete
 autocmd BufReadPost weekly setlocal expandtab
 autocmd BufReadPost *.dojo setlocal expandtab ft=yaml
 autocmd BufReadPost *.yaml setlocal expandtab
 autocmd BufReadPost *.cabal setlocal expandtab
+autocmd BufReadPost *.nix setlocal expandtab
 
 augroup mkd
 autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>
