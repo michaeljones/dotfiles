@@ -3,7 +3,7 @@ set nocompatible		" don't worry about Vi compatibility
 
 " Initialise Pathogen Setup
 filetype off
-call pathogen#runtime_append_all_bundles()
+call pathogen#infect()
 call pathogen#helptags()
 
 " Recommended in :help netrw-ml_get to silence ml_get errors
