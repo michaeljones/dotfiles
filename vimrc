@@ -197,4 +197,14 @@ map <C-m> :%s/
 let g:ctrlp_map = '<leader>t'
 let g:ctrlp_working_path_mode = ''
 
+" vim-localvimrc options
+" ----------------------
+
+let g:localvimrc_persistent = 1
+
+" wildfire.vim options
+" --------------------
+
+let g:wildfire_fuel_map = '<leader>f'
+let g:wildfire_water_map = '<leader>g'
 
