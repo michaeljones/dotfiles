@@ -6,6 +6,9 @@ zmodload -a complist
 
 autoload colors ; colors
 
+# Assert emacs bindings for use in tmux
+bindkey -e
+
 #
 #	Environment
 #
