@@ -1,7 +1,7 @@
 
-URxvt.perl-ext-common: default
-URxvt.perl-ext: tabber
-URxvt.perl-lib: /home/mike/.user_config
+! URxvt.perl-ext-common: default
+! URxvt.perl-ext: tabber
+! URxvt.perl-lib: /home/mike/.user_config
 URxvt.geometry: 150x55
 
 URxvt.scrollBar: False
