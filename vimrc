@@ -208,3 +208,8 @@ let g:localvimrc_persistent = 1
 let g:wildfire_fuel_map = '<leader>f'
 let g:wildfire_water_map = '<leader>g'
 
+
+" vim-jsbeautify options
+" ----------------------
+
+autocmd FileType javascript noremap <buffer> <F8> :call JsBeautify()<cr>
