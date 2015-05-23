@@ -65,3 +65,6 @@ function! s:gitdiffcached(bang,gitdir,...)
   nnoremap <silent> q :q<CR>
   setlocal buftype=nowrite nobuflisted noswapfile nomodifiable filetype=git
 endfunction
+
+" Custom additions - mpj
+setlocal expandtab
