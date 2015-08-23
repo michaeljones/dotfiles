@@ -4,7 +4,7 @@ zmodload -a colors
 zmodload -a autocomplete
 zmodload -a complist
 
-autoload colors ; colors
+autoload -U colors && colors
 
 # Assert emacs bindings for use in tmux
 bindkey -e
@@ -89,7 +89,10 @@ set dollar = '$'
 # PROMPT="%{\033[m%}[%{\033[33m%}%n%{\033[m%}@%{\033[33m%}%m%{\033[m%}~%{\033[33m%}%@%{\033[m%}:%c]$dollar "
 orange="%{$fg[blue]%}"
 # PROMPT="[%n@%M~%T:%c]$ "
-PROMPT="$(virtualenv_prompt)%{$fg[white]%}[%{$fg[yellow]%}%n%{$fg[white]%}@%{$fg[yellow]%}%M%{$fg[white]%}~%{$fg[yellow]%}%T%{$fg[white]%}:%c]$ "
+# PROMPT="$(virtualenv_prompt)%{$fg[white]%}[%{$fg[yellow]%}%n%{$fg[white]%}@%{$fg[yellow]%}%M%{$fg[white]%}~%{$fg[yellow]%}%T%{$fg[white]%}:%c]$ "
+PROMPT="$(virtualenv_prompt)%{$fg_bold[white]%}[%{$fg[yellow]%}%n%{$fg[white]%}@%{$fg[yellow]%}%M%{$fg[white]%}~%{$fg[yellow]%}%T%{$fg[white]%}:%c]$ %{$reset_color%}"
+
+eval `dircolors ~/.user_config/dircolors`
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.zhistfile
