@@ -2,7 +2,7 @@
 # ~/.tmuxinator/dancetimetable.yml
 
 name: dancetimetable
-root: /home/mike
+root: /home/mike/root/projects/dancetimetable/dancetimetable
 
 # Optional tmux socket
 # socket_name: foo
@@ -24,11 +24,9 @@ root: /home/mike
 
 windows:
   - run:
-    - cd root/projects/dancetimetable/dancetimetable
     - source ~/.virtualenvs/dancetimetable/bin/activate
     - source ../environment
     - make run-zouk
   - code:
-    - cd root/projects/dancetimetable/dancetimetable
     - source ~/.virtualenvs/dancetimetable/bin/activate
     - source ../environment
