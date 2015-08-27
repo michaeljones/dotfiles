@@ -53,7 +53,7 @@ background = rgba(45, 45, 45, 1.0)
 
 # black
 color0  = #282a2e
-color8  = #5d636d
+color8  = #5c5c66
 
 # red
 color1  = #a54242
