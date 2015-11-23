@@ -9,6 +9,9 @@ call pathogen#helptags()
 " Recommended in :help netrw-ml_get to silence ml_get errors
 let g:netrw_use_noswf= 0
 
+set exrc            " enable per-directory .vimrc files
+set secure          " disable unsafe commands in local .vimrc files
+
 if has("vms")
 	set nobackup
 else
@@ -84,6 +87,13 @@ autocmd BufReadPost *.dojo setlocal expandtab ft=yaml
 autocmd BufReadPost *.yaml setlocal expandtab
 autocmd BufReadPost *.cabal setlocal expandtab
 autocmd BufReadPost *.nix setlocal expandtab
+autocmd BufReadPost *.hiveconfig setlocal filetype=json
+autocmd BufReadPost *.hiveconfig setlocal shiftwidth=2
+autocmd BufReadPost *.ts setlocal filetype=typescript
+
+" autocmd GUIEnter * call Maximize_Window()
+autocmd GUIEnter * call system('wmctrl -i -b add,maximized_vert,maximized_horz -r '.v:windowid)
+
 
 augroup mkd
 autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>
@@ -93,6 +103,7 @@ highlight Pmenu guibg=brown gui=bold
 
 " Allow unix & dos line endings
 set fileformats=unix,dos
+set fileformats+=dos
 
 set history=50			" remember 50 commands
 set showcmd				" show currently typed sequence in the bottom right
@@ -190,12 +201,18 @@ map Y y$
 map <C-m> :%s/
 //g<CR>
 
+" Close buffer without closing the window
+nmap <silent> <leader>d :bp\|bd #<CR>
+
 
 " Ctrl-P options
 " --------------
 
 let g:ctrlp_map = '<leader>t'
 let g:ctrlp_working_path_mode = ''
+let g:ctrlp_custom_ignore = {
+ \ 'dir': 'node_modules'
+ \ }
 
 " vim-localvimrc options
 " ----------------------
@@ -207,7 +224,6 @@ let g:localvimrc_persistent = 1
 
 let g:wildfire_fuel_map = '<leader>f'
 let g:wildfire_water_map = '<leader>g'
-
 
 " vim-jsbeautify options
 " ----------------------

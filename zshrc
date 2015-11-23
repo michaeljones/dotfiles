@@ -124,7 +124,7 @@ alias du='du -h'
 alias df='df -h'
 
 
-alias c='jump; cd `cat /tmp/jump.tmp`'
+alias c='jump-wrapper; cd `cat /tmp/jump.tmp`'
 
 # Development
 # -----------

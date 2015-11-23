@@ -99,8 +99,6 @@ def main(argv):
     os.putenv( "GCC_NO_HIGHLIGHT", "1" )
     os.putenv( "MPJ_SKIP_TCSH", "1" )
 
-    local_geometry = os.environ[ "MPJ_LOCAL_VIM_GEOMETRY" ]
-
     # Run the command and send output (there are only errors) to /dev/null
     command = """PYTHONPATH='' gvim --servername %s %s %s %s > /dev/null 2> /dev/null;""" % ( name, flags, line_number, " ".join(files))
     os.system(command)

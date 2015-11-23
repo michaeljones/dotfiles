@@ -1,0 +1,15 @@
+#!/bin/bash
+
+base=$1
+branch=$2
+
+if [ -z "$branch" ]
+then
+	echo "git ram <base> <branch>"
+	exit
+fi
+
+git checkout $branch
+git rebase $base
+git checkout $base
+git merge --no-ff --no-edit $branch
