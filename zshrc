@@ -10,6 +10,11 @@ autoload -U colors && colors
 bindkey -e
 
 #
+# Assert Emacs bindings for inside Tmux
+#
+bindkey -e
+
+#
 #	Environment
 #
 export PYTHONSTARTUP=~/.python_startup.py
@@ -143,7 +148,8 @@ alias mc='make clean'
 
 # Text editing
 # ------------
-alias g="$HOME/bin/gvim-wrapper --server"
+# alias g="$HOME/bin/gvim-wrapper --server"
+alias g="n"
 alias gg="$HOME/bin/gvim-wrapper"
 alias gt='opentree.tcsh'
 alias vi='vim'

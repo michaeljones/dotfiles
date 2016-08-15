@@ -10,7 +10,7 @@ try:
 except ValueError:
     pass
 
-import commands
+import subprocess
 import glob
 import optparse
 
@@ -80,30 +80,48 @@ def main(argv):
     files.sort()
 
     # Get the current desktop number we're on
-    command = "wmctrl -d | grep '\*' | cut -c1"
-    desktop = commands.getoutput(command)
+    # command = "qdbus org.kde.kwin /KWin currentDesktop"
+    # desktop = subprocess.check_output(command.split(' '))
 
-    server = commands.getoutput("wmctrl -l | grep MPJGVIMDESKTOP | grep -E '0x[0-9a-e]{8}  " + desktop + "'")
+    # if desktop not in ("1", "2", "3"):
+    #     desktop = "1"
 
-    name = ""
-    if server:
-        name = server.split(' ')[-1]
+    # g alias provides --server and gg doesn't so use MPJGVIM1 for g and MPJGVIM2 for gg
+    desktop = 1
+    name = "MPJGVIMDESKTOP2-%s" % desktop
+    if opt.server:
+        name = "MPJGVIMDESKTOP1-%s" % desktop
+
+    # Configure command line options
+    if os.getenv('USE_NVIM'):
+        already_running = os.path.exists(os.getenv('NVIM_LISTEN_ADDRESS'))
+    else:
+        command = "/usr/bin/gvim --serverlist"
+        serverlist = subprocess.check_output(command.split(' '))
+
 
     # Check if the server we're after is running. If so join it with remote
     # silent otherwise leave it out so that we become the server
-    if name:
-        flags += " --remote-silent"
+    if os.getenv('USE_NVIM'):
+        pass
     else:
-        name = "MPJGVIMDESKTOP1-%s" % desktop
+        if name in serverlist:
+            flags += " --remote-silent"
 
     os.putenv( "GCC_NO_HIGHLIGHT", "1" )
     os.putenv( "MPJ_SKIP_TCSH", "1" )
 
     # Run the command and send output (there are only errors) to /dev/null
-    command = """PYTHONPATH='' gvim --servername %s %s %s %s > /dev/null 2> /dev/null;""" % ( name, flags, line_number, " ".join(files))
+    if os.getenv('USE_NVIM'):
+        if already_running:
+            command = """nvr --remote-silent %s %s;""" % (line_number, " ".join(files))
+        else:
+            command = """PYTHONPATH='' termite --icon neovim-n --name neovim --exec "nvim %s %s %s";""" % ( flags, line_number, " ".join(files))
+    else:
+        command = """PYTHONPATH='' /usr/bin/gvim --servername %s %s %s %s;""" % ( name, flags, line_number, " ".join(files))
+    # print(command)
     os.system(command)
 
 
 if __name__ == "__main__":
     main(sys.argv[1:])
-

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+export SHELL=/bin/zsh
+
+# Source the appropriate python virtualenv setup
+. $HOME/.virtualenvs/neovim-remote/bin/activate
+
+export USE_NVIM=true
+export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
+
+python $HOME/bin/gvim-impl $*

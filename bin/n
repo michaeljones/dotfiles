@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# export PATH=/home/mike/root/projects/neovim/git/build/bin:$PATH
+
+# nvim $*
+# /home/mike/root/projects/neovim/neovim-qt/build/bin/nvim-qt $*
+
+# termite --title "neovim" --exec "nvim $*" &
+
+nvim-wrapper $* &

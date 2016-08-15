@@ -240,3 +240,24 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_python_checkers = ['flake8']
+
+
+if has('nvim')
+    " Neovim-qt Guifont command
+    command -nargs=? Guifont call rpcnotify(0, 'Gui', 'SetFont', "<args>") | let g:Guifont="<args>"
+    Guifont DejaVu Sans Mono:h11
+    " Guifont Monospace:h11
+
+	" Enable true colors in terminal
+	set termguicolors
+
+	" Use deoplete.
+	let g:deoplete#enable_at_startup = 1
+
+	" Show filename, etc, in terminal window title
+	set title
+
+	" Display 'line' cursor in insert mode
+	" from: https://github.com/neovim/neovim/wiki/FAQ#how-can-i-change-the-cursor-shape-in-the-terminal
+	let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+endif

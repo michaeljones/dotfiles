@@ -1,7 +1,9 @@
-#!/bin/sh
+#!/bin/bash
+
+export SHELL=/bin/zsh
 
 # Source the appropriate python virtualenv setup
-. $HOME/local/python/python-2.7.4/bin/activate;
+. $HOME/local/python/python-2.7.6/bin/activate
 
 python $HOME/bin/gvim-impl $*
 
