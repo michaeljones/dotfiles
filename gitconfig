@@ -14,10 +14,13 @@
 	mn = merge --no-ff --no-edit
 	fix-whitespace = !git diff | git apply --whitespace=fix
 	cn = commit --no-verify
+	char-diff = diff --word-diff --word-diff-regex=.
+	letter-diff = diff --word-diff --word-diff-regex=.
 [apply]
 	whitespace = fix
 [merge]
 	tool = meld
+	conflictstyle = diff3
 [color]
 	diff = auto
 	ui = auto
@@ -29,3 +32,6 @@
 	autosquash = true
 [rerere]
 	enabled = true
+[diff]
+	algorithm = patience
+	compactionHeuristic = 1

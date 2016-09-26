@@ -14,3 +14,4 @@ setlocal shiftwidth=4
 
 setlocal textwidth=100
 
+setlocal suffixesadd+=.ts,.tsx

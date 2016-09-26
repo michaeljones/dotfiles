@@ -2,7 +2,7 @@
 # ~/.tmuxinator/dancetimetable.yml
 
 name: dancetimetable
-root: /home/mike/root/projects/dancetimetable/dancetimetable
+root: /home/michael/root/projects/dancetimetable/dancetimetable
 
 # Optional tmux socket
 # socket_name: foo
@@ -25,8 +25,15 @@ root: /home/mike/root/projects/dancetimetable/dancetimetable
 windows:
   - run:
     - source ~/.virtualenvs/dancetimetable/bin/activate
+    - nave.sh use 5.3.0
     - source ../environment
     - make run-zouk
+  - webpack:
+    - source ~/.virtualenvs/dancetimetable/bin/activate
+    - nave.sh use 5.3.0
+    - source ../environment
+    - make webpack
   - code:
     - source ~/.virtualenvs/dancetimetable/bin/activate
+    - nave.sh use 5.3.0
     - source ../environment

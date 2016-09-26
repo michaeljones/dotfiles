@@ -8,4 +8,7 @@ export SHELL=/bin/zsh
 export USE_NVIM=true
 export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
 
+# From: https://bugs.launchpad.net/ubuntu/+source/at-spi2-core/+bug/1193236
+export NO_AT_BRIDGE=1
+
 python $HOME/bin/gvim-impl $*

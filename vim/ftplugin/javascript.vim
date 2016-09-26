@@ -19,3 +19,5 @@ imap <buffer> <leader>e console.log('');<ESC>2hi
 
 " Binding to change 'require' to 'import' syntax
 map <F6> 0cwimport<ESC>wwcf(from <ESC>$xxA;<ESC>
+
+setlocal suffixesadd+=.js,.jsx,.ts,.tsx

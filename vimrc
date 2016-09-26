@@ -3,8 +3,6 @@ set nocompatible		" don't worry about Vi compatibility
 
 " Initialise Pathogen Setup
 filetype off
-call pathogen#infect()
-call pathogen#helptags()
 
 " Recommended in :help netrw-ml_get to silence ml_get errors
 let g:netrw_use_noswf= 0
@@ -16,6 +14,7 @@ if has("vms")
 	set nobackup
 else
 	set backup
+	set backupcopy=yes
 	set backupdir=/tmp/vim_backups,/tmp
 	set directory=/tmp/vim_swap,/tmp
 endif
@@ -29,8 +28,6 @@ let mapleader = ","
 " Always show the status line
 set laststatus=2
 
-" Highlight column after textwidth
-set colorcolumn=+1
 
 " Show white space (tabs, trailing spaces and eof chars)
 " From Vim Casts
@@ -42,6 +39,10 @@ set background=dark
 colorscheme desert
 syntax on
 filetype on
+
+" Highlight column after textwidth
+set colorcolumn=+1
+hi ColorColumn ctermbg=darkgrey guibg=#444444
 
 " Gvim Gui Options
 set guioptions-=m
@@ -204,6 +205,55 @@ map <C-m> :%s/
 " Close buffer without closing the window
 nmap <silent> <leader>d :bp\|bd #<CR>
 
+" Setup Plugins
+" -------------
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
+Plug 'neomake/neomake'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'embear/vim-localvimrc'
+Plug 'einfachtoll/didyoumean'
+
+call plug#end()
+
+" Neomake options
+" ---------------
+
+autocmd! BufWritePost * Neomake
+
+let g:neomake_open_list=2
+
+let g:neomake_javascript_enabled_makers = ['eslint']
+
+
+let g:neomake_typescript_tsc_maker = {
+      \ 'args': [],
+      \ 'append_file': 0,
+      \ 'errorformat':
+      \ '%E%f %#(%l\,%c): error %m,' .
+      \ '%E%f %#(%l\,%c): %m,' .
+      \ '%Eerror %m,' .
+      \ '%C%\s%\+%m'
+      \ }
+
+" let g:neomake_typescript_tslint_maker = {
+"       \ 'args': ['--verbose'],
+"       \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
+"       \ }
+
+let g:neomake_typescript_enabled_makers = ['tsc', 'tslint']
+
+" typescript-vim options
+" ----------------------
+
+let g:typescript_compiler_binary = 'tsc'
+let g:typescript_compiler_options = ''
+autocmd FileType typescript :set makeprg=tsc
+
 
 " Ctrl-P options
 " --------------
@@ -240,6 +290,17 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_python_checkers = ['flake8']
+
+let g:syntastic_typescript_checkers = ['tsc']
+
+let g:syntastic_typescript_tsc_args = '--target es6 --jsx preserve --noImplicitAny'
+
+" Typescript Vim Settings
+" ----------------------
+
+let g:typescript_compiler_options = '--target es6 --jsx preserve --noImplicitAny'
+
+let g:syntastic_typescript_tsc_fname = ''
 
 
 if has('nvim')
