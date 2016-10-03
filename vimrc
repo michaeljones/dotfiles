@@ -330,4 +330,6 @@ if has('nvim')
 	" Display 'line' cursor in insert mode
 	" from: https://github.com/neovim/neovim/wiki/FAQ#how-can-i-change-the-cursor-shape-in-the-terminal
 	let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+
+	set clipboard+=unnamedplus
 endif
