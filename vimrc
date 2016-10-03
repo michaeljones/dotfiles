@@ -24,6 +24,7 @@ let g:clang_complete_auto = 0
 
 " Configure our map leader
 let mapleader = ","
+let maplocalleader = ","
 
 " Always show the status line
 set laststatus=2
@@ -217,8 +218,16 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'embear/vim-localvimrc'
 Plug 'einfachtoll/didyoumean'
+Plug 'ElmCast/elm-vim'
 
 call plug#end()
+
+
+" elm-vim options
+" ---------------
+
+let g:elm_format_autosave = 1
+
 
 " Neomake options
 " ---------------
