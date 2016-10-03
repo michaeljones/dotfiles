@@ -219,9 +219,9 @@ Plug 'leafgarland/typescript-vim'
 Plug 'embear/vim-localvimrc'
 Plug 'einfachtoll/didyoumean'
 Plug 'ElmCast/elm-vim'
+Plug 'elixir-lang/vim-elixir'
 
 call plug#end()
-
 
 " elm-vim options
 " ---------------
@@ -331,5 +331,9 @@ if has('nvim')
 	" from: https://github.com/neovim/neovim/wiki/FAQ#how-can-i-change-the-cursor-shape-in-the-terminal
 	let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
+	inoremap <expr><c-j> pumvisible() ? "\<c-n>" : "\<c-j>"
+	inoremap <expr><c-k> pumvisible() ? "\<c-p>" : "\<c-k>"
+
 	set clipboard+=unnamedplus
+
 endif
