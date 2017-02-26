@@ -219,7 +219,13 @@ Plug 'leafgarland/typescript-vim'
 Plug 'embear/vim-localvimrc'
 Plug 'einfachtoll/didyoumean'
 Plug 'ElmCast/elm-vim'
+Plug 'Quramy/tsuquyomi'
 Plug 'elixir-lang/vim-elixir'
+Plug 'cespare/vim-toml'
+Plug 'rust-lang/rust.vim'
+Plug 'Shougo/vimproc.vim'
+Plug 'kewah/vim-stylefmt'
+Plug 'pearofducks/ansible-vim'
 
 call plug#end()
 
@@ -239,29 +245,33 @@ let g:neomake_open_list=2
 let g:neomake_javascript_enabled_makers = ['eslint']
 
 
-let g:neomake_typescript_tsc_maker = {
-      \ 'args': [],
-      \ 'append_file': 0,
-      \ 'errorformat':
-      \ '%E%f %#(%l\,%c): error %m,' .
-      \ '%E%f %#(%l\,%c): %m,' .
-      \ '%Eerror %m,' .
-      \ '%C%\s%\+%m'
-      \ }
+" let g:neomake_typescript_tsc_maker = {
+"       \ 'exe': 'tsc-suppress',
+"       \ 'args': ['--noEmit'],
+"       \ 'append_file': 0,
+"       \ 'errorformat':
+"       \ '%E%f %#(%l\,%c): error %m,' .
+"       \ '%E%f %#(%l\,%c): %m,' .
+"       \ '%Eerror %m,' .
+"       \ '%C%\s%\+%m'
+"       \ }
 
 " let g:neomake_typescript_tslint_maker = {
 "       \ 'args': ['--verbose'],
 "       \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
 "       \ }
 
-let g:neomake_typescript_enabled_makers = ['tsc', 'tslint']
+
+let g:neomake_typescript_enabled_makers = ['tslint']
+
+let g:neomake_rust_enabled_makers = []
 
 " typescript-vim options
 " ----------------------
 
-let g:typescript_compiler_binary = 'tsc'
-let g:typescript_compiler_options = ''
-autocmd FileType typescript :set makeprg=tsc
+" let g:typescript_compiler_binary = 'tsc'
+" let g:typescript_compiler_options = ''
+" autocmd FileType typescript :set makeprg=tsc
 
 
 " Ctrl-P options
@@ -300,17 +310,23 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_python_checkers = ['flake8']
 
-let g:syntastic_typescript_checkers = ['tsc']
+" let g:syntastic_typescript_checkers = ['tsc']
 
-let g:syntastic_typescript_tsc_args = '--target es6 --jsx preserve --noImplicitAny'
+" let g:syntastic_typescript_tsc_args = '--target es6 --jsx preserve --noImplicitAny'
+" let g:syntastic_typescript_tsc_args = '--noEmit'
+
+" let g:syntastic_typescript_tsc_fname = ''
 
 " Typescript Vim Settings
 " ----------------------
 
-let g:typescript_compiler_options = '--target es6 --jsx preserve --noImplicitAny'
+" let g:typescript_compiler_options = '--target es6 --jsx preserve --noImplicitAny'
+" let g:typescript_compiler_options = '--noEmit'
 
-let g:syntastic_typescript_tsc_fname = ''
+" tsuquyomi Settings
+" ------------------
 
+let g:tsuquyomi_disable_default_mappings = 1
 
 if has('nvim')
     " Neovim-qt Guifont command
