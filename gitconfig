@@ -10,6 +10,7 @@
 	fp = format-patch
 	s = status
 	commmit = commit
+	comit = commit
 	rn = release-notes
 	mn = merge --no-ff --no-edit
 	fix-whitespace = !git diff | git apply --whitespace=fix

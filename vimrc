@@ -200,8 +200,7 @@ map <F6> t,la<CR><ESC>
 map Y y$
 
 " Cleanup 
-map <C-m> :%s/
-//g<CR>
+" map <C-m> :%s/ //g<CR>
 
 " Close buffer without closing the window
 nmap <silent> <leader>d :bp\|bd #<CR>
@@ -213,7 +212,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
-Plug 'neomake/neomake'
+" Plug 'neomake/neomake'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'embear/vim-localvimrc'
@@ -226,19 +225,69 @@ Plug 'rust-lang/rust.vim'
 Plug 'Shougo/vimproc.vim'
 Plug 'kewah/vim-stylefmt'
 Plug 'pearofducks/ansible-vim'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'craigemery/vim-autotag'
+Plug 'w0rp/ale', { 'tag': 'v1.4.1' }
+Plug 'hail2u/vim-css3-syntax'
+" Plug 'prettier/vim-prettier', {
+"   \ 'do': 'yarn install',
+"   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf.vim'
 
 call plug#end()
+
+" rust.vim options
+" ----------------
+
+let g:rustfmt_autosave = 1
+
+
+" Prettier options
+" ----------------
+
+let g:prettier#autoformat = 0
+" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql PrettierAsync
+
+" ale options
+" -----------
+
+let g:ale_sign_column_always = 1
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_save = 0
+let g:ale_lint_on_enter = 0
+
+" vim-css3-syntax
+" ---------------
+
+" From the project README: https://github.com/hail2u/vim-css3-syntax
+augroup VimCSS3Syntax
+  autocmd!
+
+  autocmd FileType css setlocal iskeyword+=-
+augroup END
+
 
 " elm-vim options
 " ---------------
 
 let g:elm_format_autosave = 1
+let g:elm_make_output_file = '/dev/null'
 
+" neoformat options
+" -----------------
+
+" autocmd BufWritePre *.js,*.ts,*.tsx Neoformat
+
+" fzf.vim options
+" ---------------
+
+" nmap <leader>f <plug>(fzf-maps-n)
 
 " Neomake options
 " ---------------
 
-autocmd! BufWritePost * Neomake
+" autocmd! BufWritePost * Neomake
 
 let g:neomake_open_list=2
 
@@ -277,10 +326,10 @@ let g:neomake_rust_enabled_makers = []
 " Ctrl-P options
 " --------------
 
-let g:ctrlp_map = '<leader>t'
+let g:ctrlp_map = '<leader>v'
 let g:ctrlp_working_path_mode = ''
 let g:ctrlp_custom_ignore = {
- \ 'dir': 'node_modules'
+ \ 'dir': '\v[\/](node_modules|elm-stuff|built|etc)$'
  \ }
 
 " vim-localvimrc options
@@ -352,4 +401,13 @@ if has('nvim')
 
 	set clipboard+=unnamedplus
 
+	function! ClipboardYank()
+	  call system('xclip -i -selection clipboard', @@)
+	endfunction
+	function! ClipboardPaste()
+	  let @@ = system('xclip -o -selection clipboard')
+	endfunction
+
+	vnoremap <silent> y y:call ClipboardYank()<cr>
+	vnoremap <silent> d d:call ClipboardYank()<cr>
 endif
