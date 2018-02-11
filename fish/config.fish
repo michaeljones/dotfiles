@@ -10,11 +10,15 @@ alias lt "ls -althr"
 
 set --export PATH /home/mike/.cabal/bin $PATH
 
+# set --export PATH /home/mike/local/oni/latest $PATH
+
 set --export VIRTUAL_ENV_DISABLE_PROMPT "true"
 
 set --export DOTSHELL ".fish"
 
 set --export LS_COLORS "ow=01;34;40:"
+
+set --export PGPASSFILE $HOME/.pgpass
 
 
 function rm
@@ -35,4 +39,9 @@ function gs
     else
         grep -I -R -n --colour=auto $argv *
     end
+end
+
+# Base16 Shell
+if status --is-interactive
+    eval sh $HOME/root/projects/base16-shell/scripts/base16-default-dark.sh
 end
