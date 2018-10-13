@@ -212,12 +212,13 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
 " Plug 'neomake/neomake'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'embear/vim-localvimrc'
 Plug 'einfachtoll/didyoumean'
-Plug 'ElmCast/elm-vim'
+Plug 'Zaptic/elm-vim', { 'tag': '0.19.0.1' }
 Plug 'Quramy/tsuquyomi'
 Plug 'elixir-lang/vim-elixir'
 Plug 'cespare/vim-toml'
@@ -227,11 +228,11 @@ Plug 'kewah/vim-stylefmt'
 Plug 'pearofducks/ansible-vim'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'craigemery/vim-autotag'
-Plug 'w0rp/ale', { 'tag': 'v1.4.1' }
+Plug 'w0rp/ale', { 'tag': 'v2.1.1' }
 Plug 'hail2u/vim-css3-syntax'
-" Plug 'prettier/vim-prettier', {
-"   \ 'do': 'yarn install',
-"   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
 " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Plug 'junegunn/fzf.vim'
 
@@ -247,7 +248,7 @@ let g:rustfmt_autosave = 1
 " ----------------
 
 let g:prettier#autoformat = 0
-" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql PrettierAsync
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql PrettierAsync
 
 " ale options
 " -----------
@@ -272,6 +273,8 @@ augroup END
 " ---------------
 
 let g:elm_format_autosave = 1
+let g:elm_make_show_warnings = 0
+let g:elm_delete_elm_stuff_on_fail = 1
 let g:elm_make_output_file = '/dev/null'
 
 " neoformat options
@@ -382,6 +385,9 @@ if has('nvim')
     command -nargs=? Guifont call rpcnotify(0, 'Gui', 'SetFont', "<args>") | let g:Guifont="<args>"
     Guifont DejaVu Sans Mono:h11
     " Guifont Monospace:h11
+
+  " Inccommand
+  set inccommand=nosplit
 
 	" Enable true colors in terminal
 	set termguicolors
