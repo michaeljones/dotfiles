@@ -12,6 +12,13 @@ setlocal tabstop=4
 setlocal softtabstop=4
 setlocal shiftwidth=4
 
-setlocal textwidth=100
+setlocal textwidth=120
 
-setlocal suffixesadd+=.ts,.tsx
+setlocal suffixesadd+=index.ts,.ts,.tsx
+
+" Convert 'word' to '(word: any)'
+" map <buffer> <leader>f bi(<ESC>lea: any)<ESC>
+map <buffer> <leader>g ea: any<ESC>
+map <buffer> <leader>r a;<ESC>:lne<CR>
+map <buffer> <leader>b :TsuGeterrProject<CR>
+map <buffer> <C-]> <Plug>(TsuquyomiDefinition)
