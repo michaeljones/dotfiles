@@ -257,6 +257,7 @@ if has('nvim')
 
     let win = nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
     call setwinvar(win, '&winhighlight', 'NormalFloat:FloatWindowBackground')
+    call setwinvar(win, '&winblend', '5')
   endfunction
 
   let g:fzf_layout = { 'window': 'call FloatingFZF()' }
