@@ -39,7 +39,7 @@ hi IncSearch	guifg=slategrey guibg=khaki
 "hi LineNr
 hi ModeMsg	guifg=goldenrod
 hi MoreMsg	guifg=SeaGreen
-hi NonText	guifg=grey30 guibg=grey20
+hi NonText	guifg=grey30
 hi Question	guifg=springgreen
 hi Search	guibg=peru guifg=wheat
 hi SpecialKey	guifg=grey30 guibg=grey20

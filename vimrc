@@ -1,11 +1,42 @@
 " Basic Preferences
-set nocompatible		" don't worry about Vi compatibility
+set nocompatible
 
-" Initialise Pathogen Setup
-filetype off
+" Setup Plugins
+" -------------
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+Plug 'leafgarland/typescript-vim'
+Plug 'embear/vim-localvimrc'
+Plug 'einfachtoll/didyoumean'
+Plug 'Zaptic/elm-vim', { 'tag': '0.19.0.1' }
+Plug 'Quramy/tsuquyomi'
+Plug 'elixir-editors/vim-elixir'
+Plug 'chiel92/vim-autoformat'
+Plug 'cespare/vim-toml'
+Plug 'rust-lang/rust.vim'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'kewah/vim-stylefmt'
+Plug 'pearofducks/ansible-vim'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'craigemery/vim-autotag'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+call plug#end()
 
 " Recommended in :help netrw-ml_get to silence ml_get errors
 let g:netrw_use_noswf= 0
+
+" Disable netrw
+let loaded_netrwPlugin = 1
 
 set exrc            " enable per-directory .vimrc files
 set secure          " disable unsafe commands in local .vimrc files
@@ -15,8 +46,8 @@ if has("vms")
 else
 	set backup
 	set backupcopy=yes
-	set backupdir=/tmp/vim_backups,/tmp
-	set directory=/tmp/vim_swap,/tmp
+	set backupdir=/tmp
+	set directory=/tmp
 endif
 
 " Disable clang for the moment
@@ -117,45 +148,8 @@ set backspace=eol,start,indent
 set incsearch			" searches as you type instead of waiting for <CR>
 set hlsearch			" enables highlighting for search results
 
-" XP Template Options
-" -------------------
-let g:xptemplate_snippet_folders=['~/.vim/xptemplate']
-
-" MiniBufferExplorer Options
-" --------------------------
-" let g:miniBufExplMapWindowNavVim = 1
-" let g:miniBufExplMapWindowNavArrows = 1
-" let g:miniBufExplMapCTabSwitchBufs = 1
-" let g:miniBufExplModSelTarget = 1 
-" let g:miniBufExplVSplit = 20
-" let g:miniBufExplorerDebugLevel = 10 
-" let g:miniBufExplorerDebugMode = 2 
-
-
-" Python Options
-" --------------
-let python_highlight_numbers = 1
-let python_highlight_builtins = 1
-let python_highlight_exceptions = 1
-
-
-" KeyBoard mappings
-" -----------------
-
-" map j <left>
-" map k <down>
-" map l <up>
-" map ; <right>
-
-" map <c-i> <c-u>
-
-
-" Buffer nav
-map <F1> :TMiniBufExplorer<cr>
-map <F2> :TlistToggle
-
-" map <A-k> :bnext<CR>
-" map <A-l> :bprevious<CR> 
+" Key bindings
+" ------------
 
 map <C-j> :bnext<CR>
 map <C-k> :bprevious<CR>
@@ -166,21 +160,9 @@ imap <C-k> <ESC>:bprevious<CR>
 map <c-del> <ESC>
 imap <c-del> <ESC>
 
-
 " Ctags
 map <A-n> :cprevious<CR>
 map <A-m> :cnext<CR>
-
-" Save & Quits
-" map <C-w> :bd<CR>
-" map <C-S-w> :bd!<CR>
-
-" map <C-q> :q!<CR>:q!<CR>
-" vmap <C-q> <ESC>:q!<CR>:q!<CR>
-" imap <C-q> <ESC>:q!<CR>:q!<CR>
-" map <C-s> :w<CR>
-
-" imap <C-s> <esc><C-s>
 
 " Insert new line 
 map <c-o> o<esc>
@@ -199,64 +181,39 @@ map <F6> t,la<CR><ESC>
 " Preferable behaviour
 map Y y$
 
-" Cleanup 
-" map <C-m> :%s/ //g<CR>
-
 " Close buffer without closing the window
 nmap <silent> <leader>d :bp\|bd #<CR>
 
-" Setup Plugins
-" -------------
 
-call plug#begin('~/.vim/plugged')
+" Python Options
+" --------------
+let python_highlight_numbers = 1
+let python_highlight_builtins = 1
+let python_highlight_exceptions = 1
 
-Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive'
-" Plug 'neomake/neomake'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'leafgarland/typescript-vim'
-Plug 'embear/vim-localvimrc'
-Plug 'einfachtoll/didyoumean'
-Plug 'Zaptic/elm-vim', { 'tag': '0.19.0.1' }
-Plug 'Quramy/tsuquyomi'
-Plug 'elixir-lang/vim-elixir'
-Plug 'cespare/vim-toml'
-Plug 'rust-lang/rust.vim'
-Plug 'Shougo/vimproc.vim'
-Plug 'kewah/vim-stylefmt'
-Plug 'pearofducks/ansible-vim'
-Plug 'cakebaker/scss-syntax.vim'
-Plug 'craigemery/vim-autotag'
-Plug 'w0rp/ale', { 'tag': 'v2.1.1' }
-Plug 'hail2u/vim-css3-syntax'
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-" Plug 'junegunn/fzf.vim'
+" autoformat options
+" ------------------
 
-call plug#end()
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
+let g:autoformat_remove_trailing_spaces = 0
 
 " rust.vim options
 " ----------------
 
 let g:rustfmt_autosave = 1
+let g:rustfmt_emit_files = 1
 
+" Elixir options
+" --------------
+let g:mix_format_on_save = 1
+let g:mix_format_silent_errors = 1
 
 " Prettier options
 " ----------------
 
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql PrettierAsync
-
-" ale options
-" -----------
-
-let g:ale_sign_column_always = 1
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_save = 0
-let g:ale_lint_on_enter = 0
 
 " vim-css3-syntax
 " ---------------
@@ -277,15 +234,38 @@ let g:elm_make_show_warnings = 0
 let g:elm_delete_elm_stuff_on_fail = 1
 let g:elm_make_output_file = '/dev/null'
 
-" neoformat options
-" -----------------
-
-" autocmd BufWritePre *.js,*.ts,*.tsx Neoformat
-
 " fzf.vim options
 " ---------------
 
-" nmap <leader>f <plug>(fzf-maps-n)
+nmap <leader>v :FZF<CR>
+
+" Using floating windows of Neovim to start fzf
+if has('nvim')
+  let $FZF_DEFAULT_OPTS .= ' --border --margin=0,2'
+  let $FZF_DEFAULT_OPTS=' --color=dark --layout=reverse  --margin=1,4'
+
+  hi FloatWindowBackground guibg=grey24
+
+  function! FloatingFZF()
+    let width = float2nr(&columns * 0.9)
+    let height = float2nr(&lines * 0.6)
+    let opts = { 'relative': 'editor',
+               \ 'row': (&lines - height) / 2,
+               \ 'col': (&columns - width) / 2,
+               \ 'width': width,
+               \ 'height': height }
+
+    let win = nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
+    call setwinvar(win, '&winhighlight', 'NormalFloat:FloatWindowBackground')
+  endfunction
+
+  let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+endif
+
+" rust-vim options
+" ----------------
+
+let g:rustfmt_autosave = 1
 
 " Neomake options
 " ---------------
@@ -295,45 +275,11 @@ let g:elm_make_output_file = '/dev/null'
 let g:neomake_open_list=2
 
 let g:neomake_javascript_enabled_makers = ['eslint']
-
-
-" let g:neomake_typescript_tsc_maker = {
-"       \ 'exe': 'tsc-suppress',
-"       \ 'args': ['--noEmit'],
-"       \ 'append_file': 0,
-"       \ 'errorformat':
-"       \ '%E%f %#(%l\,%c): error %m,' .
-"       \ '%E%f %#(%l\,%c): %m,' .
-"       \ '%Eerror %m,' .
-"       \ '%C%\s%\+%m'
-"       \ }
-
-" let g:neomake_typescript_tslint_maker = {
-"       \ 'args': ['--verbose'],
-"       \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
-"       \ }
-
+let g:neomake_rust_enabled_makers = []
 
 let g:neomake_typescript_enabled_makers = ['tslint']
 
 let g:neomake_rust_enabled_makers = []
-
-" typescript-vim options
-" ----------------------
-
-" let g:typescript_compiler_binary = 'tsc'
-" let g:typescript_compiler_options = ''
-" autocmd FileType typescript :set makeprg=tsc
-
-
-" Ctrl-P options
-" --------------
-
-let g:ctrlp_map = '<leader>v'
-let g:ctrlp_working_path_mode = ''
-let g:ctrlp_custom_ignore = {
- \ 'dir': '\v[\/](node_modules|elm-stuff|built|etc)$'
- \ }
 
 " vim-localvimrc options
 " ----------------------
@@ -345,40 +291,6 @@ let g:localvimrc_persistent = 1
 
 let g:wildfire_fuel_map = '<leader>f'
 let g:wildfire_water_map = '<leader>g'
-
-" vim-jsbeautify options
-" ----------------------
-
-autocmd FileType javascript noremap <buffer> <F8> :call JsBeautify()<cr>
-
-
-" Syntastic Settings
-" ------------------
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_python_checkers = ['flake8']
-
-" let g:syntastic_typescript_checkers = ['tsc']
-
-" let g:syntastic_typescript_tsc_args = '--target es6 --jsx preserve --noImplicitAny'
-" let g:syntastic_typescript_tsc_args = '--noEmit'
-
-" let g:syntastic_typescript_tsc_fname = ''
-
-" Typescript Vim Settings
-" ----------------------
-
-" let g:typescript_compiler_options = '--target es6 --jsx preserve --noImplicitAny'
-" let g:typescript_compiler_options = '--noEmit'
-
-" tsuquyomi Settings
-" ------------------
-
-let g:tsuquyomi_disable_default_mappings = 1
 
 if has('nvim')
     " Neovim-qt Guifont command

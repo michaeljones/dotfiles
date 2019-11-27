@@ -20,3 +20,5 @@ setlocal textwidth=100
 " map  <buffer> <C-c> aprint ""<ESC>i
 " imap <buffer> <C-c> print ""<ESC>i
 
+" Auto format the buffer on saving using vim-autoformat
+au BufWrite * :Autoformat
