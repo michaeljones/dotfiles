@@ -241,8 +241,8 @@ nmap <leader>v :FZF<CR>
 
 " Using floating windows of Neovim to start fzf
 if has('nvim')
-  let $FZF_DEFAULT_OPTS .= ' --border --margin=0,2'
-  let $FZF_DEFAULT_OPTS=' --color=dark --layout=reverse  --margin=1,4'
+  let $FZF_DEFAULT_COMMAND = 'fdfind --type file'
+  let $FZF_DEFAULT_OPTS = ' --color=dark --layout=reverse --margin=1,4'
 
   hi FloatWindowBackground guibg=grey24
 
